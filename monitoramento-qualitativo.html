@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento Qualitativo da Água</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="bg-light py-3">
+        <div class="container">
+            <div class="header-content d-flex justify-content-between align-items-center">
+                <div class="text-content">
+                    <div class="semarh">SEMARH</div>
+                    <div class="sigrh">Sistema Integrado de Gestão de Recursos Hídricos - SIGRH</div>
+                </div>
+                <div class="logo">
+                    <img src="./img/TO_logo.png" alt="Logo" class="logo-img">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary-dark" style="background-color:darkblue;">
+        <div class="container justify-content-center">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="plantando-agua.html">Projeto Plantando Água</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projeto-barraginhas.html">Projeto Barraginhas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="monitoramento-quantitativo.html">Monitoramento Quantitativo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="monitoramento-qualitativo.html">Monitoramento Qualitativo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="comites-bacias.html">Comitês de Bacias</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="title1">Monitoramento Qualitativo da Água</h2>
+        <p style="text-align: justify;"> A SEMARH, por meio da Diretoria de Recursos Hídricos, realiza o monitoramento
+            da qualidade das águas superficiais do Tocantins. Esse monitoramento consiste na coleta e análise de
+            amostras de águas de diversos pontos dos rios do Estado para
+            acompanhamento da variação na qualidade da água ao longo dos anos. As coletas de dados são realizadas com frequência trimestral,
+            avaliando parâmetros físico-químicos, microbiológico e defensivos agrícolas.</p>
+
+        <p class="p1" style="text-align: justify;"> Os resultados dos parâmetros físicos são obtidos com a utilização da
+            sonda multiparamétrica modelo
+            YSI EXO1. Já os parâmetros químicos e microbiológicos são analisados e atestados pelo Laboratório Conágua Ambiental Ltda. Com os resultados em
+            mãos, é calculado o Índice de Qualidade das Águas (IQA) para cada ponto, permitindo uma melhor visualização
+            de quais locais demandam maior atenção da SEMARH.</p>
+
+        <h3 class="title2">Selecione um Ponto de Monitoramento</h3>
+        <select id="pontoMonitoramento" class="form-control mb-3">
+            <!-- Opções de pontos de monitoramento (exemplo) -->
+            <option value="1">Ponto 01: Rio Araguaia (Araguatins)</option>
+            <option value="2">Ponto 02: Rio Tocantins (Itaguatins)</option>
+            <option value="3">Ponto 03: Rio Araguaia (Xambioá)</option>
+            <option value="4">Ponto 04: Rio Lontra (Araguanã)</option>
+            <option value="5">Ponto 05: Rio Lontra (Araguaína)</option>
+            <option value="6">Ponto 06: Rio Manuel Alves Grande (Goiatins)</option>
+            <option value="7">Ponto 07: Rio Araguaia (Couto Magalhães)</option>
+            <option value="8">Ponto 08: Rio Tocantins (Tupiratins)</option>
+            <option value="9">Ponto 09: Rio Araguaia (Araguacema)</option>
+            <option value="10">Ponto 10: Rio Côco (Caseara)</option>
+            <option value="11">Ponto 11: Rio Sono (Pedro Afonso)</option>
+            <option value="12">Ponto 12: Rio Tocantins (Miracema do Tocantins)</option>
+            <option value="13">Ponto 13: Rio Sono (Novo Acordo)</option>
+            <option value="14">Ponto 14: Rio Balsas (Aparecida do Rio Negro)</option>
+            <option value="15">Ponto 15: Rio Novo (Mateiros)</option>
+            <option value="16">Ponto 16: Rio Javaés (Lagoa da Confusão)</option>
+            <option value="17">Ponto 17: Rio Formoso (Lagoa da Confusão)</option>
+            <option value="18">Ponto 18: Rio Urubu (Lagoa da Confusão)</option>
+            <option value="19">Ponto 19: Rio Formoso (Dueré)</option>
+            <option value="20">Ponto 20: Rio Formoso (Formoso do Araguaia)</option>
+            <option value="21">Ponto 21: Rio Formoso (Sandolândia)</option>
+            <option value="22">Ponto 22: Rio Santo Antônio (Gurupi)</option>
+            <option value="23">Ponto 23: Rio Areia (Porto Nacional)</option>
+            <option value="24">Ponto 24: Rio Manuel Alves (Natividade)</option>
+            <option value="25">Ponto 25: Rio Manuel Alves (Natividade)</option>
+            <option value="26">Ponto 26: Rio Palma (Conceição do Tocantins)</option>
+            <option value="27">Ponto 27: Rio Manuel Alves (Dianópolis)</option>
+            <option value="28">Ponto 28: Rio Palmeiras (Taipas)</option>
+            <option value="29">Ponto 29: Rio Palma (Aurora do Tocantins)</option>
+            <option value="30">Ponto 30: Rio Paranã (Paranã)</option>
+            <option value="31">Ponto 31: Rio Manoel Alves Pequeno (Itacajá)</option>
+            <option value="32">Ponto 32: Rio Santo Antônio (Figueirópolis)</option>
+            <option value="33">Ponto 33: Rio Santo Tereza (Peixe)</option>
+            <option value="34">Ponto 34: Rio São Martinho (Araguatins)</option>
+            <option value="35">Ponto 35: Rio do Coco (Marianópolis)</option>
+            <option value="36">Ponto 36: Rio Piranhas (Dois Irmãos)</option>
+            <option value="37">Ponto 37: Rio Dueré (Lagoa da Confusão)</option>
+            <option value="38">Ponto 38: Rio Manoel Alves Grande (Campos Lindos)</option>
+            <option value="39">Ponto 39: Rio Corda (Riachinho)</option>
+            <option value="40">Ponto 40: Rio Riozinho (Pium)</option>
+            <option value="41">Ponto 41: Rio Caiapó (Araguacema)</option>
+            <option value="42">Ponto 42: Rio Palma (Paranã)</option>
+            <option value="43">Ponto 43: Rio Xavante (Dueré)</option>
+            <option value="44">Ponto 44: Rio Manuel Alves (Rio da Conceição)</option>
+            <option value="45">Ponto 45: Rio Providência (Miranorte)</option>
+            <option value="46">Ponto 46: Rio Sono (Bom Jesus do Tocantins)</option>
+            <option value="47">Ponto 47: Rio Vermelho (Goiatins)</option>
+            <option value="48">Ponto 48: Rio Balsa (Ponte Alta do Tocantins)</option>
+            <option value="49">Ponto 49: Rio Santa Tereza (Gurupi)</option>
+            <option value="50">Ponto 50: Rio Corda (Xambioá)</option>
+            <option value="51">Ponto 51: Rio Tocantins (São Sebastião do Tocantins)</option>
+            <option value="52">Ponto 52: Rio Piranhas (São Bento do Tocantins)</option>
+            <option value="53">Ponto 53: Rio Tocantins (Aguiarnópolis)</option>
+            <option value="54">Ponto 54: Rio Tontra (Araguaina)</option>
+            <option value="55">Ponto 55: Rio Muricizal (Muricilândia)</option>
+            <option value="56">Ponto 56: Rio Tocantins (Palmeirante)</option>
+            <option value="57">Ponto 57: Rio das Cunhas (Bernardo Sayão)</option>
+            <option value="58">Ponto 58: Rio Jenipapo (Arapoema)</option>
+            <option value="59">Ponto 59: Rio Araguaia (Pau D'Arco)</option>
+            <option value="60">Ponto 60: Rio Perdido (Rio Sono)</option>
+            <option value="61">Ponto 61: Ribeirão dos Mangues (Porto Nacional)</option>
+            <option value="62">Ponto 62: Rio Crixás (Brejinho de Nazaré)</option>
+            <option value="63">Ponto 63: Rio São Valério (São Valério)</option>
+            <option value="64">Ponto 64: Rio do Peixe (Natividade)</option>
+            <option value="65">Ponto 65: Rio Preto (Mateiros)</option>
+            <option value="66">Ponto 66: Rio Tocantins (Barra do Ouro)</option>
+            <option value="67">Ponto 67: Rio Balsas (Santa Tereza do Tocantins)</option>
+            <option value="68">Ponto 68: Rio Tocantins (Ipueiras)</option>
+            <option value="69">Ponto 69: Rio Conceição (Taguatinga)</option>
+            <option value="70">Ponto 70: Rio Escuro (Araguaçu)</option>
+            <option value="71">Ponto 71: Rio Tocantins (Praia Norte)</option>
+            <option value="72">Ponto 72: Rio Água Suja (Porto Nacional)</option>
+            <option value="73">Ponto 73: Rio do Sono (São Félix do Tocantins)</option>
+            <option value="74">Ponto 74: Rio Água Suja (Monte do Carmo)</option>
+            <option value="75">Ponto 75: Rio Canabrava (Alvorada)</option>
+            <option value="76">Ponto 76: Rio Manuel Alves (Santa Rosa do Tocantins)</option>
+            <option value="77">Ponto 77: Rio Javaés (Pium)</option>
+            <option value="78">Ponto 78: Rio Javaés (Formoso do Araguaia)</option>
+            <option value="79">Ponto 79: Rio Javaés (Formoso do Araguaia)</option>
+            <option value="80">Ponto 80: Córrego Água Fria (Colinas do Tocantins)</option>
+
+            <!-- Adicione mais opções conforme necessário -->
+        </select>
+
+        <select id="dataSelecionada" class="form-control mb-3">
+            <!-- Opção padrão indicando que nenhuma data está selecionada -->
+            <option value="" selected disabled>Selecione uma Campanha de Coleta</option>
+            <!-- Opções de datas (exemplo) -->
+            <option value="data1">1º Trimestre de 2021</option>
+            <option value="data2">2º Trimestre de 2021</option>
+            <option value="data3">1º Trimestre de 2022</option>
+            <option value="data4">2º Trimestre de 2022</option>
+            <option value="data5">3º Trimestre de 2022</option>
+            <option value="data6">4º Trimestre de 2022</option>
+            <option value="data7">1º Trimestre de 2023</option>
+            <option value="data8">2º Trimestre de 2023</option>
+
+        </select>
+
+        <h3 class="title3">Gráfico de Parâmetros de Qualidade da Água</h3>
+        <canvas id="graficoQualidadeAgua" width="650" height="400"></canvas>
+
+        <h3 class="title4" style="text-align: center; ">Localização dos Pontos de Monitoramento</h3>
+        <div id="map" style="width: 100%; height: 650px; border: 1px outset #c9c9c9; margin: 0 auto; border-radius: 10px;">
+        </div>
+    </div>
+
+    <footer class="footer bg-light mt-5">
+        <div class="container">
+            <p class="text-center">© 2024 SEMARH. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-chartjs-3d"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

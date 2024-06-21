@@ -1,0 +1,151 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-img {
+    width: 300px; /* Ajuste o tamanho da logo conforme necessário */
+    height: auto;
+}
+
+@media (min-width: 600px) {
+    .logo-img {
+        max-height: none; /* Remove a restrição de altura para telas maiores */
+        height: 100%;
+    }
+}
+
+.header-content .semarh {
+    font-size: 3.4em; /* Aumenta o tamanho da fonte de SEMARH */
+    font-weight: bold;
+}
+
+.header-content .sigrh {
+    font-size: 1.5em; /* Aumenta o tamanho da fonte de SIGRH */
+}
+
+
+
+/*BARRA DE NAVEGAÇÃO*/
+.collapse.navbar-collapse .nav-link {
+    color:aliceblue; /* Cor do texto branco */
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16.5px;
+}
+
+.collapse.navbar-collapse .nav-link:hover {
+    color: rgb(107, 103, 103)
+}
+
+
+.card {
+    margin-bottom: 20px;
+}
+
+.footer {
+    padding: 20px 0;
+}
+
+.navbar .navbar-nav {
+    margin: 0 auto;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+
+/*FORMATAÇÃO DE TEXTOS E ESPAÇAMENTOS*/
+
+.title1, .title2, .title3, .title4{
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.p1 {
+    margin-bottom: 50px;
+}
+
+.title3, .title4 {
+    margin-top: 50px;
+}
+
+.form-control mb-3 {
+    width: 100px;
+}
+
+/*LEGENDA DO MAPA*/
+.legend {
+    background: white;
+    line-height: 1.5;
+    padding: 6px 8px;
+    font: 12px Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.legend i {
+    width: 10px;
+    height: 14px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+/*cards*/
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.estacao_detalhes {
+    & .container{
+        & .row {
+            background-color: #f0f0f0; /* Fundo cinza claro */
+            padding: 20px 0;
+        }
+    }
+    
+}
+
+.white-box {
+    background-color: #fff; /* Fundo branco */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+    margin: 10px 0;
+}
+
+.white-box img {
+    margin-bottom: 15px;
+}
+
+.white-box h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.white-box p {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.white-box span {
+    font-size: 1em;
+    color: #666;
+}
