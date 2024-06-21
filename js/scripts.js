@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imgp16 = "img/ponto16.jpg", imgp17 = "img/ponto17.jpg", imgp18 = "img/ponto18.jpg", imgp19 = "img/ponto19.jpg", imgp20 = "img/ponto20.jpg",
         imgp21 = "img/ponto21.jpg", imgp22 = "img/ponto22.jpg", imgp23 = "img/ponto23.jpg", imgp24 = "img/ponto24.jpg", imgp25 = "img/ponto25.jpg",
         imgp26 = "img/ponto26.jpg", imgp27 = "img/ponto27.jpg", imgp28 = "img/ponto28.jpg", imgp29 = "img/ponto29.jpg", imgp30 = "img/ponto30.jpg",
-        imgp31 = "img/ponto31.jpg", imgp32 = "img/ponto32.jpg", imgp33 = "img/ponto33.jpg", imgp34 = "sigrh/img/ponto34.jpg", imgp35 = "img/ponto35.jpg",
+        imgp31 = "img/ponto31.jpg", imgp32 = "img/ponto32.jpg", imgp33 = "img/ponto33.jpg", imgp34 = "img/ponto34.jpg", imgp35 = "img/ponto35.jpg",
         imgp36 = "img/ponto36.jpg", imgp37 = "img/ponto37.jpg", imgp38 = "img/ponto38.jpg", imgp39 = "img/ponto39.jpg", imgp40 = "img/ponto40.jpg",
         imgp41 = "img/ponto41.jpg", imgp42 = "img/ponto42.jpg", imgp43 = "img/ponto43.jpg", imgp44 = "img/ponto44.jpg", imgp45 = "img/ponto45.jpg",
         imgp46 = "img/ponto46.jpg", imgp47 = "img/ponto47.jpg", imgp48 = "img/ponto48.jpg", imgp49 = "img/ponto49.jpg", imgp50 = "img/ponto50.jpg",
