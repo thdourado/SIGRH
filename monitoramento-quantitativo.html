@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monitoramento Quantitativo da Água</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .hidden-row {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,133 +32,543 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-primary-dark" style="background-color:darkblue;">
         <div class="container justify-content-center">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="plantando-agua.html">Projeto Plantando Água</a></li>
-                    <li class="nav-item"><a class="nav-link" href="projeto-barraginhas.html">Projeto Barraginhas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="monitoramento-quantitativo.html">Monitoramento Quantitativo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="monitoramento-qualitativo.html">Monitoramento Qualitativo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projeto-barraginhas.html">Projeto Barraginhas</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="monitoramento-quantitativo.html">Monitoramento
+                            Quantitativo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="monitoramento-qualitativo.html">Monitoramento
+                            Qualitativo</a></li>
                     <li class="nav-item"><a class="nav-link" href="comites-bacias.html">Comitês de Bacias</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <div class="container mt-5">
         <h2 class="title1">Monitoramento Quantitativo da Água</h2>
-        <p>A SEMARH realiza o monitoramento dos dados de cota, nível e vazão dos rios tocantinenses, por meio de
+        <p style="text-align: justify;">A SEMARH realiza o monitoramento dos dados de cota, nível e vazão dos rios
+            tocantinenses, por meio de
             Plataformas de Coleta de Dados (PCDs), instaladas em 56 pontos no Estado.</p>
 
-        <section class="estacao_detalhes" id="ESTACAO">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h3>Última leitura em <b>13/06/2024</b> às <b>15:30h</b></h3>
+        <div class="container" style="border-bottom: 1px solid #ddd;">
+            <div class="row">
+                <div class="col-md-12" style="padding-top: 10px;">
+                    <div class="table-responsive wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40%; vertical-align: middle;">Estação</th>
+                                    <th style="width: 13%; vertical-align: middle">Nível (cm)</th>
+                                    <th style="width: 13%; vertical-align: middle">Vazão (m³/h)</th>
+                                    <th style="width: 14%; vertical-align: middle">Chuva (mm)</th>
+                                    <th style="width: 20%; vertical-align: middle" title="Representa o nível da estação em relação aos valores de referência">
+                                        Situação *</th>
+                                </tr>
+                            </thead>
+                            <tbody id="station-table-body">
+                                <tr onclick="updateChart('21758000 - AURORA DO TOCANTINS')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">21758000 - AURORA DO
+                                            TOCANTINS</a></td>
+                                    <td>206</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-atencao-inundacao"
+                                            title="Atenção para inundação">Atenção para inundação</span></td>
+                                </tr>
+                                <tr onclick="updateChart('21844900 - RIO PALMEIRAS')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">21844900 - RIO PALMEIRAS</a>
+                                    </td>
+                                    <td>140</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-atencao-inundacao"
+                                            title="Atenção para inundação">Atenção para inundação</span></td>
+                                </tr>
+                                <tr onclick="updateChart('21891000 - BARRA DE PALMAS')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">21891000 - BARRA DE
+                                            PALMAS</a></td>
+                                    <td>325</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-atencao-inundacao"
+                                            title="Atenção para inundação">Atenção para inundação</span></td>
+                                </tr>
+                                <tr onclick="updateChart('22050001 - PEIXE')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22050001 - PEIXE</a></td>
+                                    <td>218</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('22100000 - COLONHA')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22100000 - COLONHA</a></td>
+                                    <td>192</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('22160000 - GURUPI')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22160000 - GURUPI</a></td>
+                                    <td>389</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('22170000 - RIO CRIXÁS')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22170000 - RIO CRIXÁS</a>
+                                    </td>
+                                    <td>261</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('22186000 - RIO MANUEL ALVES')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22186000 - RIO MANUEL
+                                            ALVES</a></td>
+                                    <td>334</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('22220000 - PORTO JERÔNIMO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22220000 - PORTO JERÔNIMO</a>
+                                    </td>
+                                    <td>282</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('22241000 - RIO DO PEIXE')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22241000 - RIO DO PEIXE</a>
+                                    </td>
+                                    <td>241</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('22250000 FAZENDA LOBEIRA')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22250000 FAZENDA LOBEIRA</a>
+                                    </td>
+                                    <td>58</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('22350200 - UFT AGROTINS')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22350200 - UFT AGROTINS</a>
+                                    </td>
+                                    <td>-</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('22420000 - BARRA CÓRREGO BREJO COMPRIDO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22420000 - BARRA CÓRREGO
+                                            BREJO COMPRIDO</a></td>
+                                    <td>133</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                <tr onclick="updateChart('17900000 - RIO PROVIDÊNCIA')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">17900000 - RIO
+                                            PROVIDÊNCIA</a></td>
+                                    <td>22</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('17050001 - RIO NOVO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22670000 - RIO NOVO</a></td>
+                                    <td>238</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('17050001 - JATOBÁ (FAZENDA BOA NOVA)')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22680000 - JATOBÁ (FAZENDA
+                                            BOA NOVA)</a></td>
+                                    <td>298</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('17050001 - RIO BALSAS')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22741000 - RIO BALSAS</a>
+                                    </td>
+                                    <td>207</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('17050001 - PORTO REAL')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">22900000 - PORTO REAL</a>
+                                    </td>
+                                    <td>72</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('17050001 - TUPIRATINS')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">23100000 - TUPIRATINS</a>
+                                    </td>
+                                    <td>144</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('17050001 - GOIATINS')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">23250000 - GOIATINS</a></td>
+                                    <td>110</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('17050001 - DESCARRETO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">23700000 - DESCARRETO</a>
+                                    </td>
+                                    <td>97</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('17050001 - BARREIRA DO PEQUI')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26710000 - BARREIRA DO
+                                            PEQUI</a></td>
+                                    <td>127</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('17050001 - FAZENDA COBRAPE')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26711000 - FAZENDA
+                                            COBRAPE</a></td>
+                                    <td>524</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('17050001 - FAZENDA DOIS RIOS')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26713000 - FAZENDA DOIS
+                                            RIOS</a></td>
+                                    <td>202</td>
+                                    <td>10.0</td>
+                                    <td>20.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26721000 - DORILÂNDIA')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26721000 - DORILÂNDIA</a>
+                                    </td>
+                                    <td>202</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26730000 - PROJETO RIO FORMOSO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26730000 - PROJETO RIO
+                                            FORMOSO</a></td>
+                                    <td>190</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26751000 - JUSANTE PROJETO RIO FORMOSO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26751000 - JUSANTE PROJETO
+                                            RIO FORMOSO</a></td>
+                                    <td>199</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26790000 - PONTE RIO DUERÉ')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26790000 - PONTE RIO
+                                            DUERÉ</a></td>
+                                    <td>73</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26792000 - FOZ RIO DUERÉ')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26792000 - FOZ RIO DUERÉ</a>
+                                    </td>
+                                    <td>204</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26795100 - RIO URUBU FAZENDA SÃO BENTO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26795100 - RIO URUBU FAZENDA
+                                            SÃO BENTO</a></td>
+                                    <td>142.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26795120 - PONTE DO RIO PIUM')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26795120 - PONTE DO RIO
+                                            PIUM</a></td>
+                                    <td>161.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26795140 - JUSANTE PONTE RIO PIUM')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26795140 - JUSANTE PONTE RIO
+                                            PIUM</a></td>
+                                    <td>31.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26795200 - MONTANTE EIXO PONTE RIO URUBU')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26795200 - MONTANTE EIXO
+                                            PONTE RIO URUBU</a></td>
+                                    <td>478.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26795700 - RIO URUBU FAZENDA FORTALEZA')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26795700 - RIO URUBU FAZENDA
+                                            FORTALEZA</a></td>
+                                    <td>483.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26795800 - PONTE RIO XAVANTE')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26795800 - PONTE RIO
+                                            XAVANTE</a></td>
+                                    <td>71.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26796000 - FOZ RIO XAVANTE')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26796000 - FOZ RIO
+                                            XAVANTE</a></td>
+                                    <td>571.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26798000 - RIO FORMOSO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26798000 - RIO FORMOSO</a>
+                                    </td>
+                                    <td>347.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26798100 - RIO FORMOSO LOROTI')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26798100 - RIO FORMOSO
+                                            LOROTI</a></td>
+                                    <td>196.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26798500 - JUSANTE EIXO TARTARUGA RIO URUBU')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26798500 - JUSANTE EIXO
+                                            TARTARUGA RIO URUBU</a></td>
+                                    <td>305.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26799000 - FOZ RIO FORMOSO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26799000 - FOZ RIO
+                                            FORMOSO</a></td>
+                                    <td>152.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('26800000 - BARREIRA DA CRUZ')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">26800000 - BARREIRA DA
+                                            CRUZ</a></td>
+                                    <td>93.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('27110000 - RIO DO COCO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">27110000 - RIO DO COCO</a>
+                                    </td>
+                                    <td>98.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('27300900 - RIO CAIAPÓ - FAZ GRUPO AGROPAULO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">27300900 - RIO CAIAPÓ - FAZ
+                                            GRUPO AGROPAULO</a></td>
+                                    <td>261.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('27320000 - ARAGUACEMA (CHACARA ARAGUAIA)')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">27320000 - ARAGUACEMA
+                                            (CHACARA ARAGUAIA)</a></td>
+                                    <td>304.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('27530000 - BERNARDO SAYÃO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">27530000 - BERNARDO SAYÃO</a>
+                                    </td>
+                                    <td>450.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('27550000 - ARAPOEMA')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">27550000 - ARAPOEMA</a></td>
+                                    <td>135.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('27600010 - PONTE RIO BARREIRAS')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">27600010 - PONTE RIO
+                                            BARREIRAS</a></td>
+                                    <td>70.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('28150040 - MURICILÂNDIA')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">28150040 - MURICILÂNDIA</a>
+                                    </td>
+                                    <td>144.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('28200000 - PONTE RIO LONTRA')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">28200000 - PONTE RIO
+                                            LONTRA</a></td>
+                                    <td>181.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('28280000 - ARAGUANÃ')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">28280000 - ARAGUANÃ</a></td>
+                                    <td>188.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('28300000 - XAMBIOÁ')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">28300000 - XAMBIOÁ</a></td>
+                                    <td>272.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('28318000 - RIO CORDA RIACHINHO')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">28318000 - RIO CORDA
+                                            RIACHINHO</a></td>
+                                    <td>164.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                                <tr onclick="updateChart('28850000 - ARAGUATINS')">
+                                    <td><a href="javascript:void(0)"
+                                            title="visualizar últimas leituras da estação">28850000 - ARAGUATINS</a>
+                                    </td>
+                                    <td>307.0</td>
+                                    <td><span class="label label-normal" title="Normal">Normal</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-center">
+                            <button id="prev-btn" class="btn btn-primary" onclick="showPreviousPage()">Anterior</button>
+                            <button id="next-btn" class="btn btn-primary" onclick="showNextPage()">Próximo</button>
+                            <span id="page-info"></span>
+                        </div>
+                        <script>
+                            const rows = document.querySelectorAll('#station-table-body tr');
+                            const rowsPerPage = 5;
+                            let currentPage = 1;
+
+                            function showPage(page) {
+                                const start = (page - 1) * rowsPerPage;
+                                const end = page * rowsPerPage;
+
+                                rows.forEach((row, index) => {
+                                    if (index >= start && index < end) {
+                                        row.classList.remove('hidden-row');
+                                    } else {
+                                        row.classList.add('hidden-row');
+                                    }
+                                });
+
+                                document.getElementById('prev-btn').disabled = page === 1;
+                                document.getElementById('next-btn').disabled = end >= rows.length;
+
+                                document.getElementById('page-info').textContent = `Página ${page} de ${Math.ceil(rows.length / rowsPerPage)}`;
+
+                            }
+
+                            function showNextPage() {
+                                if (currentPage * rowsPerPage < rows.length) {
+                                    currentPage++;
+                                    showPage(currentPage);
+                                }
+                            }
+
+                            function showPreviousPage() {
+                                if (currentPage > 1) {
+                                    currentPage--;
+                                    showPage(currentPage);
+                                }
+                            }
+
+                            showPage(currentPage);
+                        </script>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-3 text-center">
-                        <div class="white-box wow fadeInUp animated" data-wow-delay="1s"
-                            style="visibility: visible; animation-delay: 1s; animation-name: fadeInUp;">
-                            <img src="./img/nuvem.png" alt="Chuva" width="94" height="80">
-                            <h2>Chuva (mm):</h2>
-                            <p>
-                                0.4 </p>
-                            <span">Acumulado de 24h
-                            </span">
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 text-center">
-                        <div class="white-box wow fadeInUp animated" data-wow-delay="2s"
-                            style="visibility: visible; animation-delay: 2s; animation-name: fadeInUp;">
-                            <img src="./img/nivel.webp" alt="Nível" width="94" height="80">
-                            <h2>Nível (cm):</h2>
-                            <p>
-                                650 </p>
-                            <br>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 text-center">
-                        <div class="white-box wow fadeInUp animated" data-wow-delay="3s"
-                            style="visibility: visible; animation-delay: 3s; animation-name: fadeInUp;">
-                            <img src="./img/vazao.jpg" alt="Vazão" width="94" height="80">
-                            <h2>Vazão (m³/s):</h2>
-                            <p>
-                                Indisponível </p>
-                            <br>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 text-center">
-                        <div class="white-box wow fadeInUp animated" data-wow-delay="4s"
-                            style="visibility: visible; animation-delay: 4s; animation-name: fadeInUp;">
-                            <img src="./img/tende.jpg" alt="Tendência" width="94" height="80">
-                            <h2>Tendência:</h2>
-                            <p>
-                                Estável </p>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="white-box wow fadeInUp table-responsive animated"
-                            style="visibility: visible; animation-name: fadeInUp;">
-                            <p class="text-center">Outras Leituras:</p>
-                            <table class="table table-striped table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Data/hora da leitura</th>
-                                        <th>Chuva (mm)</th>
-                                        <th>Nível (cm)</th>
-                                        <th>Vazão (m³/s)</th>
-                                        <th>Situação</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>13/06/2024 15:15</td>
-                                        <td>0</td>
-                                        <td>650</td>
-                                        <td></td>
-                                        <td>ATENÇÃO PARA INUNDAÇÃO</td>
-                                    </tr>
-                                    <tr>
-                                        <td>13/06/2024 15:00</td>
-                                        <td>0</td>
-                                        <td>649</td>
-                                        <td></td>
-                                        <td>ATENÇÃO PARA INUNDAÇÃO</td>
-                                    </tr>
-                                    <tr>
-                                        <td>13/06/2024 14:45</td>
-                                        <td>0</td>
-                                        <td>649</td>
-                                        <td></td>
-                                        <td>ATENÇÃO PARA INUNDAÇÃO</td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="work-with wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                        <h3 style="font-size: 12px;">* Nota: a situação representa o nível da estação em relação aos
+                            valores de referência. <a href="webroot/boletins/2018/Boletim_Hidrologico-SEMAS_"
+                                data-toggle="modal" data-target="#modalNivelReferencia">Saiba Mais</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        </section>
+
+        <!-- JavaScript do Bootstrap e dependências -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <!-- JavaScript da WOW.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+        <script>
+            new WOW().init();
+        </script>
+
+        <!-- JavaScript Personalizado -->
+        <script src="script.js"></script>
 
         <h3 class="title1" style="text-align: center; padding: 20px;">Variação no último mês</h3>
 
-        <canvas id="myChart" style="display: block; box-sizing: border-box; height: 470px; width: 940px;"></canvas>
+        <div id="chart-container">
+            <canvas id="myChart" style="display: block; box-sizing: border-box; height: 470px; width: 100%;"></canvas>
+        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             var ctx = document.getElementById("myChart").getContext('2d');
@@ -284,15 +700,233 @@
                     }
                 }
             });
+
+            function updateChart(stationName) {
+                // Dados de exemplo para as estações (substitua com os dados reais)
+                const stationData = {
+                    '21758000 - AURORA DO TOCANTINS': {
+                        levelData: [649.89, 619.03, 603.43, 594.78, 584.33, 616.3, 664.08, 649.14, 635.52, 622.74, 598.23, 578.74, 623.33, 658.25, 636.43, 624.36, 601.61, 577.89, 572.32, 584.11, 600.6, 609.87, 620.2, 630.61, 620.08, 610.75, 633.02, 644.62, 644.79, 634],
+                        rainData: [16.2, 0, 6.6, 0.6, 1.4, 0.2, 20.2, 2.4, 30.4, 6.6, 0, 0, 1.4, 0, 0.4, 0, 0, 1.2, 23.6, 0, 0, 1.4, 0, 0, 2.4, 11.6, 0, 5.2, 0.2, 1]
+                    },
+                    '21844900 - RIO PALMEIRAS': {
+                        levelData: [550, 540, 530, 520, 510, 500, 490, 480, 470, 460, 450, 440, 430, 420, 410, 400, 390, 380, 370, 360, 350, 340, 330, 320, 310, 300, 290, 280, 270, 260],
+                        rainData: [5, 10, 5, 0, 2, 3, 4, 6, 5, 4, 3, 2, 1, 0, 5, 10, 5, 0, 2, 3, 4, 6, 5, 4, 3, 2, 1, 0, 5, 10]
+                    },
+                    '21891000 - BARRA DE PALMAS': {
+                        levelData: [300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590],
+                        rainData: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+                    },
+                    '22050001 - PEIXE': {
+                        levelData: [200, 205, 210, 215, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285, 290, 295, 300, 305, 310, 315, 320, 325, 330, 335, 340, 345],
+                        rainData: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+                    },
+                    '22100000 - COLONHA': {
+                        levelData: [180, 185, 190, 195, 200, 205, 210, 215, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285, 290, 295, 300, 305, 310, 315, 320, 325],
+                        rainData: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+                    },
+                    '22160000 - GURUPI': {
+                        levelData: [380, 385, 390, 395, 400, 405, 410, 415, 420, 425, 430, 435, 440, 445, 450, 455, 460, 465, 470, 475, 480, 485, 490, 495, 500, 505, 510, 515, 520, 525],
+                        rainData: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]
+                    },
+                    '22170000 - RIO CRIXÁS': {
+                        levelData: [255, 260, 265, 270, 275, 280, 285, 290, 295, 300, 305, 310, 315, 320, 325, 330, 335, 340, 345, 350, 355, 360, 365, 370, 375, 380, 385, 390, 395, 400],
+                        rainData: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
+                    },
+                    '22186000 - RIO MANUEL ALVES': {
+                        levelData: [320, 325, 330, 335, 340, 345, 350, 355, 360, 365, 370, 375, 380, 385, 390, 395, 400, 405, 410, 415, 420, 425, 430, 435, 440, 445, 450, 455, 460, 465],
+                        rainData: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+                    },
+
+
+                    
+                    '22511000 - RIO PROVIDÊNCIA': {
+                        levelData: [22],
+                        rainData: [0]
+                    },
+                    '22670000 - RIO NOVO': {
+                        levelData: [238],
+                        rainData: [0]
+                    },
+                    '22680000 - JATOBÁ (FAZENDA BOA NOVA)': {
+                        levelData: [298],
+                        rainData: [0]
+                    },
+                    '22741000 - RIO BALSAS': {
+                        levelData: [207],
+                        rainData: [0]
+                    },
+                    '22900000 - PORTO REAL': {
+                        levelData: [72],
+                        rainData: [0]
+                    },
+                    '23100000 - TUPIRATINS': {
+                        levelData: [144],
+                        rainData: [0]
+                    },
+                    '23250000 - GOIATINS': {
+                        levelData: [110],
+                        rainData: [0]
+                    },
+                    '23700000 - DESCARRETO': {
+                        levelData: [97],
+                        rainData: [0]
+                    },
+                    '26710000 - BARREIRA DO PEQUI': {
+                        levelData: [127],
+                        rainData: [0]
+                    },
+                    '26711000 - FAZENDA COBRAPE': {
+                        levelData: [524],
+                        rainData: [0]
+                    },
+                    '26713000 - FAZENDA DOIS RIOS': {
+                        levelData: [202],
+                        rainData: [0]
+                    },
+                    '26721000 - DORILÂNDIA': {
+                        levelData: [202],
+                        rainData: [0]
+                    },
+                    '26730000 - PROJETO RIO FORMOSO': {
+                        levelData: [190],
+                        rainData: [0]
+                    },
+                    '26751000 - JUSANTE PROJETO RIO FORMOSO': {
+                        levelData: [199],
+                        rainData: [0]
+                    },
+                    '26790000 - PONTE RIO DUERÉ': {
+                        levelData: [73],
+                        rainData: [0]
+                    },
+                    '26792000 - FOZ RIO DUERÉ': {
+                        levelData: [204],
+                        rainData: [0]
+                    },
+                    '26795100 - RIO URUBU FAZENDA SÃO BENTO': {
+                        levelData: [142.0],
+                        rainData: [0]
+                    },
+                    '26795120 - PONTE DO RIO PIUM': {
+                        levelData: [161.0],
+                        rainData: [0]
+                    },
+                    '26795140 - JUSANTE PONTE RIO PIUM': {
+                        levelData: [31.0],
+                        rainData: [0]
+                    },
+                    '26795200 - MONTANTE EIXO PONTE RIO URUBU': {
+                        levelData: [478.0],
+                        rainData: [0]
+                    },
+                    '26795700 - RIO URUBU FAZENDA FORTALEZA': {
+                        levelData: [483.0],
+                        rainData: [0]
+                    },
+                    '26795800 - PONTE RIO XAVANTE': {
+                        levelData: [71.0, 72.0, 70.5, 70.8, 71.2, 70.6, 72.1, 71.5, 72.3, 71.9, 70.7, 71.3, 71.1, 71.4, 71.8, 70.9, 71.6, 72.2, 71.7, 70.4, 70.3, 71.0, 72.0, 70.5, 70.8, 71.2, 70.6, 72.1, 71.5, 72.3],
+                        rainData: [0.2, 0, 0.1, 0, 0.3, 0, 0.4, 0.2, 0, 0.1, 0, 0.5, 0, 0.2, 0.3, 0, 0.1, 0, 0.4, 0.2, 0, 0.1, 0, 0.3, 0, 0.4, 0.2, 0, 0.1, 0]
+                    },
+                    '26796000 - FOZ RIO XAVANTE': {
+                        levelData: [571.0, 572.0, 570.5, 570.8, 571.2, 570.6, 572.1, 571.5, 572.3, 571.9, 570.7, 571.3, 571.1, 571.4, 571.8, 570.9, 571.6, 572.2, 571.7, 570.4, 570.3, 571.0, 572.0, 570.5, 570.8, 571.2, 570.6, 572.1, 571.5, 572.3],
+                        rainData: [1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0]
+                    },
+                    '26798000 - RIO FORMOSO': {
+                        levelData: [347.0],
+                        rainData: [0]
+                    },
+                    '26798100 - RIO FORMOSO LOROTI': {
+                        levelData: [196.0],
+                        rainData: [0]
+                    },
+                    '26798500 - JUSANTE EIXO TARTARUGA RIO URUBU': {
+                        levelData: [305.0],
+                        rainData: [0]
+                    },
+                    '26799000 - FOZ RIO FORMOSO': {
+                        levelData: [152.0],
+                        rainData: [0]
+                    },
+                    '26800000 - BARREIRA DA CRUZ': {
+                        levelData: [93.0],
+                        rainData: [0]
+                    },
+                    '27110000 - RIO DO COCO': {
+                        levelData: [98.0],
+                        rainData: [0]
+                    },
+                    '27300900 - RIO CAIAPÓ - FAZ GRUPO AGROPAULO': {
+                        levelData: [261.0],
+                        rainData: [0]
+                    },
+                    '27320000 - ARAGUACEMA (CHACARA ARAGUAIA)': {
+                        levelData: [304.0],
+                        rainData: [0]
+                    },
+                    '27530000 - BERNARDO SAYÃO': {
+                        levelData: [450.0],
+                        rainData: [0]
+                    },
+                    '27550000 - ARAPOEMA': {
+                        levelData: [135.0],
+                        rainData: [0]
+                    },
+                    '27600010 - PONTE RIO BARREIRAS': {
+                        levelData: [70.0],
+                        rainData: [0]
+                    },
+                    '28150040 - MURICILÂNDIA': {
+                        levelData: [144.0],
+                        rainData: [0]
+                    },
+                    '28200000 - PONTE RIO LONTRA': {
+                        levelData: [181.0],
+                        rainData: [0]
+                    },
+                    '28280000 - ARAGUANÃ': {
+                        levelData: [188.0],
+                        rainData: [0]
+                    },
+                    '28300000 - XAMBIOÁ': {
+                        levelData: [272.0],
+                        rainData: [0]
+                    },
+                    '28318000 - RIO CORDA RIACHINHO': {
+                        levelData: [164.0],
+                        rainData: [0]
+                    },
+                    '28850000 - ARAGUATINS': {
+                        levelData: [307.0],
+                        rainData: [0]
+                    }
+                    // Adicione mais estações e seus dados aqui
+                };
+
+                const data = stationData[stationName];
+                if (data) {
+                    myChart.data.datasets[0].data = data.levelData;
+                    myChart.data.datasets[7].data = data.rainData;
+                    myChart.update();
+
+                    // Scroll para o gráfico
+                    document.getElementById("myChart").scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert("Dados para a estação selecionada não encontrados.");
+                }
+
+                const chartElement = document.getElementById('chart-container');
+                const elementPosition = chartElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - (window.innerHeight / 2) + (chartElement.offsetHeight / 2);
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         </script>
 
     </div>
 
-    <footer class="footer bg-light mt-5">
-        <div class="container">
-            <p class="text-center">© 2024 SEMARH. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
@@ -323,7 +957,118 @@
             }
         });
     </script>
+
+    <section class="estacao_detalhes" id="ESTACAO" style="margin-top: 50px;">
+        <div class="container" style="border: 1px solid lightgrey;">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3 style="font-size: 20px;">Última leitura em <b>21/06/2024</b> às <b>15:30h</b></h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <div class="white-box wow fadeInUp animated" data-wow-delay="1s"
+                        style="visibility: visible; animation-delay: 1s; animation-name: fadeInUp;">
+                        <img src="./img/nuvem.png" alt="Chuva" width="94" height="80">
+                        <h2>Chuva (mm):</h2>
+                        <p>
+                            0.4 </p>
+                        <span">Acumulado de 24h
+                        </span">
+                    </div>
+                </div>
+
+                <div class="col-md-3 text-center">
+                    <div class="white-box wow fadeInUp animated" data-wow-delay="2s"
+                        style="visibility: visible; animation-delay: 2s; animation-name: fadeInUp;">
+                        <img src="./img/nivel.webp" alt="Nível" width="94" height="80">
+                        <h2>Nível (cm):</h2>
+                        <p>
+                            650 </p>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="col-md-3 text-center">
+                    <div class="white-box wow fadeInUp animated" data-wow-delay="3s"
+                        style="visibility: visible; animation-delay: 3s; animation-name: fadeInUp;">
+                        <img src="./img/vazao.jpg" alt="Vazão" width="94" height="80">
+                        <h2>Vazão (m³/s):</h2>
+                        <p>
+                            Indisponível </p>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="col-md-3 text-center">
+                    <div class="white-box wow fadeInUp animated" data-wow-delay="4s"
+                        style="visibility: visible; animation-delay: 4s; animation-name: fadeInUp;">
+                        <img src="./img/tende.jpg" alt="Tendência" width="94" height="80">
+                        <h2>Tendência:</h2>
+                        <p>
+                            Estável </p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="white-box wow fadeInUp table-responsive animated"
+                        style="visibility: visible; animation-name: fadeInUp;">
+                        <p class="text-center">Outras Leituras:</p>
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Data/hora da leitura</th>
+                                    <th>Chuva (mm)</th>
+                                    <th>Nível (cm)</th>
+                                    <th>Vazão (m³/s)</th>
+                                    <th>Situação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>13/06/2024 15:15</td>
+                                    <td>0</td>
+                                    <td>650</td>
+                                    <td></td>
+                                    <td>ATENÇÃO PARA INUNDAÇÃO</td>
+                                </tr>
+                                <tr>
+                                    <td>13/06/2024 15:00</td>
+                                    <td>0</td>
+                                    <td>649</td>
+                                    <td></td>
+                                    <td>ATENÇÃO PARA INUNDAÇÃO</td>
+                                </tr>
+                                <tr>
+                                    <td>13/06/2024 14:45</td>
+                                    <td>0</td>
+                                    <td>649</td>
+                                    <td></td>
+                                    <td>ATENÇÃO PARA INUNDAÇÃO</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+
     <script src="js/scripts.js"></script>
+
+    <footer class="footer bg-light mt-5">
+        <div class="container">
+            <p class="text-center">© 2024 SEMARH. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 </body>
 
 </html>
