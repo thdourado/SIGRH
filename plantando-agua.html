@@ -17,6 +17,11 @@
             width: 100%;
             height: 400px;
         }
+
+        .custom-popup {
+            width: 250px;
+            /* Define a largura máxima desejada */
+        }
     </style>
 </head>
 
@@ -37,16 +42,20 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-primary-dark" style="background-color:darkblue;">
         <div class="container justify-content-center">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="plantando-agua.html">Projeto Plantando Água</a></li>
-                    <li class="nav-item"><a class="nav-link" href="projeto-barraginhas.html">Projeto Barraginhas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="monitoramento-quantitativo.html">Monitoramento Quantitativo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="monitoramento-qualitativo.html">Monitoramento Qualitativo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projeto-barraginhas.html">Projeto Barraginhas</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="monitoramento-quantitativo.html">Monitoramento
+                            Quantitativo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="monitoramento-qualitativo.html">Monitoramento
+                            Qualitativo</a></li>
                     <li class="nav-item"><a class="nav-link" href="comites-bacias.html">Comitês de Bacias</a></li>
                 </ul>
             </div>
@@ -55,7 +64,8 @@
 
     <div class="container mt-5">
         <h2 class="title1">Projeto Plantando Água</h2>
-        <p style="text-align: justify;">Consiste na recuperação de nascentes através do plantio de mudas nativas cultivadas nos viveiros da SEMARH,
+        <p style="text-align: justify;">Consiste na recuperação de nascentes através do plantio de mudas nativas
+            cultivadas nos viveiros da SEMARH,
             chamados de CRADs (Centros de Recuperação de Áreas Degradadas).</p>
     </div>
 
@@ -67,12 +77,179 @@
                     attribution: '© OpenStreetMap contributors'
                 }).addTo(map);
 
-                // Exemplo de marcador
-                L.marker([-10.185, -48.333]).addTo(map)
-                    .bindPopup('Local de uma nascente recuperada.')
-                    .openPopup();
-            });
+                var greenIcon = new L.Icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [18.75, 30.75],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [30, 30]
+                });
 
+
+                // BLOCO A
+
+                var popupContent = '<strong>Identificação:</strong> Nascente A1 <br>' +
+                    '<strong>Município:</strong> Taquaruçu <br>' +
+                    '<strong>Estratégia de Recuperação:</strong> Plantio de espécies nativas conjugado com a condução da regeneração natural de espécies nativas por isolamento da área (cercamento)';
+                var marker = L.marker([-10.3154, -48.2464], { icon: greenIcon }).addTo(map)
+                    .openPopup();
+                marker.bindPopup(popupContent, { className: 'custom-popup' }).openPopup();
+
+
+                L.marker([-10.3217, -48.2437], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente A6');
+
+                L.marker([-10.3233, -48.2494], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente A7');
+
+                L.marker([-10.3275, -48.25632], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente A8');
+
+                L.marker([-10.32806143936427, -48.26284084915337], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente A9');
+
+                L.marker([-10.33275289486108, -48.240875226992856], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente A10');
+
+                L.marker([-10.332933955148865, -48.245143656941934], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente A11');
+
+                L.marker([-10.328681006391129, -48.25813664810796], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente A101');
+
+                L.marker([-10.326601009158965, -48.25577335271704], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente A102');
+
+                L.marker([-10.33093654134848, -48.24610995270843], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente A103');
+
+                // BLOCO B 
+                L.marker([-10.314247679440012, -48.12259316941963], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente B14');
+
+                L.marker([-10.315573790276865, -48.124414753386155], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente B15');
+
+                L.marker([-10.316494852413296, -48.12741684935317], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente B16');
+
+                L.marker([-10.316706447829752, -48.12683108084916], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente B16a');
+
+                L.marker([-10.30047654322383, -48.16201699321288], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente B23');
+
+                // BLOCO C      
+                L.marker([-10.19544960699035, -48.19676728263059], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C7');
+
+                L.marker([-10.201471607616062, -48.21531005708089], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C13');
+
+                L.marker([-10.204280854366361, -48.21631618912615], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C14a');
+
+                L.marker([-10.203293290974232, -48.217045258732796], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C14b');
+
+                L.marker([-10.205517384717382, -48.21617775463188], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C14c');
+
+                L.marker([-10.205913072089578, -48.217022482989535], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C14d');
+
+                L.marker([-10.202819993137858, -48.219812742034286], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C15');
+
+                L.marker([-10.209722597906111, -48.22196900149425], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C16');
+
+                L.marker([-10.213419928182379, -48.224353789852465], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C17');
+
+                L.marker([-10.213578837546983, -48.23028979309485], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C102');
+
+                L.marker([-10.213539137159756, -48.22987059749356], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C103');
+
+                L.marker([-10.218164604019499, -48.224540615884564], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C104');
+
+                L.marker([-10.211648064902203, -48.22422324036907], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C105');
+
+                L.marker([-10.212679778183908, -48.22019221737874], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C106');
+
+                L.marker([-10.212398643196545, -48.22006697622313], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C107');
+
+                L.marker([-10.20573148347994, -48.221155475557715], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C108');
+
+                L.marker([-10.194385680618819, -48.19385831216101], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C109');
+
+                L.marker([-10.19410887414981, -48.19318588588642], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C111');
+
+                L.marker([-10.192078974311025, -48.17047798321614], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C112');
+
+                L.marker([-10.205549642899207, -48.22102025233604], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C114');
+
+                L.marker([-10.217293729038472, -48.22306153766572], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C115');
+
+                L.marker([-10.205549642899207, -48.22102025233604], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C116');
+
+                L.marker([-10.19529195683035, -48.17220055115345], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C117');
+
+                L.marker([-10.19333066207552, -48.170010961938644], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C118');
+
+                L.marker([-10.191245268548615, -48.171224010456065], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C119');
+
+                L.marker([-10.217522993012727, -48.22346084767345], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente C120');
+
+                // BLOCO D            
+                L.marker([-10.2703021022175, -48.3080940957609], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente D20');
+
+                L.marker([-10.281671296058459, -48.29653945078282], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente D26');
+
+                L.marker([-10.293811397752602, -48.27359176931187], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente D34');
+
+                L.marker([-10.293465019146016, -48.275373738259326], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente D34a');
+
+                L.marker([-10.276395762798167, -48.292314916045626], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente 101');
+
+                L.marker([-10.280395329318395, -48.296294869893515], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente 102');
+
+                L.marker([-10.273980109219657, -48.29191585282723], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente 103');
+
+                L.marker([-10.254173406268526, -48.266853105843005], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente 104');
+
+                L.marker([-10.25459616534706, -48.266630553637334], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente 105');
+
+                L.marker([-10.243144239498962, -48.25104894656503], { icon: greenIcon }).addTo(map)
+                    .bindPopup('Nascente 106');
+            });
         </script>
     </div>
 
