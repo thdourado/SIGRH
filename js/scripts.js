@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imgp51 = "img/ponto51.jpg", imgp52 = "img/ponto52.jpg", imgp53 = "img/ponto53.jpg", imgp54 = "img/ponto54.jpg", imgp55 = "img/ponto55.jpg",
         imgp56 = "img/ponto56.jpg", imgp57 = "img/ponto57.jpg", imgp58 = "img/ponto58.jpg", imgp59 = "img/ponto59.jpg", imgp60 = "img/ponto60.jpg",
         imgp61 = "img/ponto61.jpg", imgp62 = "img/ponto62.jpg", imgp63 = "img/ponto63.jpg", imgp64 = "img/ponto64.jpg", imgp65 = "img/ponto65.jpg",
-        imgp66 = "img/ponto66.jpg", imgp67 = "img/ponto67.jpg", imgp68 = "img/ponto68.jpg", imgp69 = "img/ponto69.jpg", imgp70 = "img/ponto70.jpg",
+        imgp66 = "img/ponto66.jpg", imgp67 = "img/ponto67.jpg", imgp68 = "img/ponto68.jpg", imgp69 = "img/ponto69.jpeg", imgp70 = "img/ponto70.jpg",
         imgp71 = "img/ponto71.jpg", imgp72 = "img/ponto72.jpg", imgp73 = "img/ponto73.jpg", imgp74 = "img/ponto74.jpg", imgp75 = "img/ponto75.jpg",
         imgp76 = "img/ponto76.jpg", imgp77 = "img/ponto77.jpg", imgp78 = "img/ponto78.jpg", imgp79 = "img/ponto79.jpg", imgp80 = "img/ponto80.jpg";
 
@@ -449,210 +449,215 @@ document.addEventListener("DOMContentLoaded", function () {
     <strong>Ponto 51:</strong> Rio Tocantins<br>
     <strong>Município:</strong> São Sebastião do Tocantins<br>
     <strong>IQA:</strong> 87 (ÓTIMO)<br>
-    <img src="imgp51" alt="Rio Tocantins" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp51}" alt="Rio Tocantins" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`)
+    .openPopup();
 
     L.marker([-6.0442, -48.1987]).addTo(map)
         .bindPopup(`
     <strong>Ponto 52:</strong> Rio Piranhas<br>
     <strong>Município:</strong> São Bento do Tocantins<br>
     <strong>IQA:</strong> 87 (ÓTIMO)<br>
-    <img src="imgp52" alt="Rio Piranhas" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp52}" alt="Rio Piranhas" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-6.5669, -47.4655]).addTo(map)
         .bindPopup(`
     <strong>Ponto 53:</strong> Rio Tocantins<br>
     <strong>Município:</strong> Aguiarnópolis<br>
     <strong>IQA:</strong> 86 (ÓTIMO)<br>
-    <img src="imgp53" alt="Rio Tocantins" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp53}" alt="Rio Tocantins" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-7.2520, -48.1601], { icon: greenIcon }).addTo(map)
         .bindPopup(`
     <strong>Ponto 54:</strong> Rio Lontra<br>
     <strong>Município:</strong> Araguaína<br>
     <strong>IQA:</strong> 76 (BOM)<br>
-    <img src="imgp54" alt="Rio Lontra" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp54}" alt="Rio Lontra" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-7.1459, -48.6112]).addTo(map)
         .bindPopup(`
     <strong>Ponto 55:</strong> Rio Muricizal<br>
     <strong>Município:</strong> Muricilândia<br>
     <strong>IQA:</strong> 84 (ÓTIMO)<br>
-    <img src="imgp55" alt="Rio Muricizal" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp55}" alt="Rio Muricizal" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
-    L.marker([-7.6577, -48.4034]).addTo(map)
+    L.marker([-7.8586, -47.9220]).addTo(map)
         .bindPopup(`
     <strong>Ponto 56:</strong> Rio Tocantins<br>
     <strong>Município:</strong> Palmeirante<br>
     <strong>IQA:</strong> 86 (ÓTIMO)<br>
-    <img src="imgp56" alt="Rio Tocantins" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp56}" alt="Rio Tocantins" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
-    L.marker([-7.8749, -48.8941]).addTo(map)
+    L.marker([-7.8739, -48.8854]).addTo(map)
         .bindPopup(`
     <strong>Ponto 57:</strong> Rio das Cunhas<br>
     <strong>Município:</strong> Bernardo Sayão<br>
     <strong>IQA:</strong> 80 (ÓTIMO)<br>
-    <img src="imgp57" alt="Rio das Cunhas" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp57}" alt="Rio das Cunhas" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
-    L.marker([-7.6619, -48.6242], { icon: greenIcon }).addTo(map)
+    L.marker([-7.6136, -49.0453], { icon: greenIcon }).addTo(map)
         .bindPopup(`
     <strong>Ponto 58:</strong> Rio Jenipapo<br>
     <strong>Município:</strong> Arapoema<br>
     <strong>IQA:</strong> 78 (BOM)<br>
-    <img src="imgp58" alt="Rio Jenipapo" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp58}" alt="Rio Jenipapo" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
-    L.marker([-7.8242, -48.9339]).addTo(map)
+    L.marker([-9.3396, -49.3733]).addTo(map)
         .bindPopup(`
     <strong>Ponto 59:</strong> Rio Araguaia<br>
     <strong>Município:</strong> Pau d'Arco<br>
     <strong>IQA:</strong> 85 (ÓTIMO)<br>
-    <img src="imgp59" alt="Rio Araguaia" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp59}" alt="Rio Araguaia" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
-    L.marker([-9.0449, -47.9201]).addTo(map)
+    L.marker([-9.0449, -47.8723]).addTo(map)
         .bindPopup(`
     <strong>Ponto 60:</strong> Rio Perdido<br>
     <strong>Município:</strong> Rio Sono<br>
     <strong>IQA:</strong> 80 (ÓTIMO)<br>
-    <img src="imgp60" alt="Rio Perdido" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp60}" alt="Rio Perdido" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
-    L.marker([-10.7119, -48.8842], { icon: greenIcon }).addTo(map)
+    L.marker([-10.3629, -48.6618], { icon: greenIcon }).addTo(map)
         .bindPopup(`
     <strong>Ponto 61:</strong> Ribeirão dos Mangues<br>
     <strong>Município:</strong> Porto Nacional<br>
     <strong>IQA:</strong> 75 (BOM)<br>
-    <img src="imgp61" alt="Ribeirão dos Mangues" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp61}" alt="Ribeirão dos Mangues" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-8.8914, -48.4380]).addTo(map)
         .bindPopup(`
     <strong>Ponto 62:</strong> Rio Crixas<br>
     <strong>Município:</strong> Brejinho de Nazaré<br>
     <strong>IQA:</strong> 80 (ÓTIMO)<br>
-    <img src="imgp62" alt="Rio Crixas" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp62}" alt="Rio Crixas" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
-    L.marker([-11.9454, -48.2358]).addTo(map)
+    L.marker([-11.6401, -48.3912]).addTo(map)
         .bindPopup(`
     <strong>Ponto 63:</strong> Rio São Valério<br>
     <strong>Município:</strong> São Valério<br>
     <strong>IQA:</strong> 88 (ÓTIMO)<br>
-    <img src="imgp63" alt="Rio São Valério" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp63}" alt="Rio São Valério" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`)
+   ;
 
-    L.marker([-10.6436, -46.8816]).addTo(map)
+    L.marker([-11.6670, -47.4391]).addTo(map)
         .bindPopup(`
     <strong>Ponto 64:</strong> Rio do Peixe<br>
     <strong>Município:</strong> Natividade<br>
     <strong>IQA:</strong> 82 (ÓTIMO)<br>
-    <img src="imgp64" alt="Rio do Peixe" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp64}" alt="Rio do Peixe" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`)
+    ;
 
-    L.marker([-10.8262, -46.9797]).addTo(map)
+    L.marker([-10.6469, -46.6267]).addTo(map)
         .bindPopup(`
     <strong>Ponto 65:</strong> Rio Preto<br>
     <strong>Município:</strong> Mateiros<br>
     <strong>IQA:</strong> 86 (ÓTIMO)<br>
-    <img src="imgp65" alt="Rio Preto" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp65}" alt="Rio Preto" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`)
+  ;
 
     L.marker([-7.6955, -48.8933]).addTo(map)
         .bindPopup(`
     <strong>Ponto 66:</strong> Rio Tocantins<br>
     <strong>Município:</strong> Barra do Ouro<br>
     <strong>IQA:</strong> 84 (ÓTIMO)<br>
-    <img src="imgp66" alt="Rio Tocantins" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp66}" alt="Rio Tocantins" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
-    L.marker([-7.1849, -48.6603]).addTo(map)
+    L.marker([-10.2713, -47.8364]).addTo(map)
         .bindPopup(`
     <strong>Ponto 67:</strong> Rio Balsas<br>
     <strong>Município:</strong> Santa Tereza do Tocantins<br>
     <strong>IQA:</strong> 85 (ÓTIMO)<br>
-    <img src="imgp67" alt="Rio Balsas" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp67}" alt="Rio Balsas" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
-    L.marker([-7.9999, -48.2985]).addTo(map)
+    L.marker([-11.2467, -48.4594]).addTo(map)
         .bindPopup(`
     <strong>Ponto 68:</strong> Rio Tocantins<br>
     <strong>Município:</strong> Ipueiras<br>
     <strong>IQA:</strong> 85 (ÓTIMO)<br>
-    <img src="imgp68" alt="Rio Tocantins" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp68}" alt="Rio Tocantins" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`)
+    ;
 
     L.marker([-12.3951, -46.4151]).addTo(map)
         .bindPopup(`
     <strong>Ponto 69:</strong> Rio Conceição<br>
     <strong>Município:</strong> Taguatinga<br>
     <strong>IQA:</strong> 82 (ÓTIMO)<br>
-    <img src="imgp69" alt="Rio Conceição" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp69}" alt="Rio Conceição" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-12.9292, -49.8257], { icon: greenIcon }).addTo(map)
         .bindPopup(`
     <strong>Ponto 70:</strong> Rio Escuro<br>
     <strong>Município:</strong> Araguaçu<br>
     <strong>IQA:</strong> 79 (BOM)<br>
-    <img src="imgp70" alt="Rio Escuro" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp70}" alt="Rio Escuro" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-6.2089, -47.7754]).addTo(map)
         .bindPopup(`
     <strong>Ponto 71:</strong> Rio Tocantins<br>
     <strong>Município:</strong> Praia Norte<br>
     <strong>IQA:</strong> 88 (ÓTIMO)<br>
-    <img src="imgp71" alt="Rio Tocantins" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp71}" alt="Rio Tocantins" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-10.6929, -48.4157]).addTo(map)
         .bindPopup(`
     <strong>Ponto 72:</strong> Rio Água Suja<br>
     <strong>Município:</strong> Porto Nacional<br>
     <strong>IQA:</strong> 81 (ÓTIMO)<br>
-    <img src="imgp72" alt="Rio Água Suja" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp72}" alt="Rio Água Suja" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-11.6473, -48.9914]).addTo(map)
         .bindPopup(`
     <strong>Ponto 73:</strong> Rio do Sono<br>
     <strong>Município:</strong> São Félix do Tocantins<br>
     <strong>IQA:</strong> 82 (ÓTIMO)<br>
-    <img src="imgp73" alt="Rio do Sono" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp73}" alt="Rio do Sono" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-10.7284, -48.8584], { icon: greenIcon }).addTo(map)
         .bindPopup(`
     <strong>Ponto 74:</strong> Rio Água Suja<br>
     <strong>Município:</strong> Monte do Carmo<br>
     <strong>IQA:</strong> 79 (BOM)<br>
-    <img src="imgp74" alt="Rio Água Suja" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp74}" alt="Rio Água Suja" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-12.4542, -49.2193]).addTo(map)
         .bindPopup(`
     <strong>Ponto 75:</strong> Rio Canabrava<br>
     <strong>Município:</strong> Alvorada<br>
     <strong>IQA:</strong> 85 (ÓTIMO)<br>
-    <img src="imgp75" alt="Rio Canabrava" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp75}" alt="Rio Canabrava" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-11.7468, -48.8621]).addTo(map)
         .bindPopup(`
     <strong>Ponto 76:</strong> Rio Manuel Alves<br>
     <strong>Município:</strong> Santa Rosa do Tocantins<br>
     <strong>IQA:</strong> 84 (ÓTIMO)<br>
-    <img src="imgp76" alt="Rio Manuel Alves" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp76}" alt="Rio Manuel Alves" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-10.8754, -48.9329]).addTo(map)
         .bindPopup(`
     <strong>Ponto 77:</strong> Rio Javaés<br>
     <strong>Município:</strong> Pium<br>
     <strong>IQA:</strong> 86 (ÓTIMO)<br>
-    <img src="imgp77" alt="Rio Javaés" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp77}" alt="Rio Javaés" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-11.7871, -49.1673]).addTo(map)
         .bindPopup(`
     <strong>Ponto 78:</strong> Rio Javaés<br>
     <strong>Município:</strong> Formoso do Araguaia<br>
     <strong>IQA:</strong> 85 (ÓTIMO)<br>
-    <img src="imgp78" alt="Rio Javaés" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp78}" alt="Rio Javaés" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-11.7922, -49.1676]).addTo(map)
         .bindPopup(`
     <strong>Ponto 79:</strong> Rio Javaés<br>
     <strong>Município:</strong> Formoso do Araguaia<br>
     <strong>IQA:</strong> 85 (ÓTIMO)<br>
-    <img src="imgp79" alt="Rio Javaés" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp79}" alt="Rio Javaés" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     L.marker([-8.0532, -48.4535]).addTo(map)
-    .bindPopup(`
+        .bindPopup(`
     <strong>Ponto 80:</strong> Córrego Água Fria<br>
     <strong>Município:</strong> Colinas do Tocantins<br>
     <strong>IQA:</strong> 89 (ÓTIMO)<br>
-    <img src="imgp80" alt="Córrego Água Fria" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
+    <img src="${imgp80}" alt="Córrego Água Fria" style="width:100%; height:auto; margin-top:10px; border-radius: 4px; box-shadow: 5px 5px 15px rgba(190, 190, 190, 0.5);">`);
 
     // Adicionando a legenda
     var legend = L.control({ position: 'bottomright' });
