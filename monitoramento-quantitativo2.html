@@ -46,8 +46,7 @@
                             Quantitativo</a></li>
                     <li class="nav-item"><a class="nav-link" href="monitoramento-qualitativo.html">Monitoramento
                             Qualitativo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="boletim-hidro.html" target="_blank">Boletim Hidro</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="comites-bacias.html">Comitês de Bacias</a></li>
                 </ul>
             </div>
         </div>
@@ -70,8 +69,7 @@
                                     <th style="width: 13%; vertical-align: middle">Nível (cm)</th>
                                     <th style="width: 13%; vertical-align: middle">Vazão (m³/h)</th>
                                     <th style="width: 14%; vertical-align: middle">Chuva (mm)</th>
-                                    <th style="width: 20%; vertical-align: middle"
-                                        title="Representa o nível da estação em relação aos valores de referência">
+                                    <th style="width: 20%; vertical-align: middle" title="Representa o nível da estação em relação aos valores de referência">
                                         Situação *</th>
                                 </tr>
                             </thead>
@@ -618,9 +616,6 @@
             new WOW().init();
         </script>
 
-        <!-- JavaScript Personalizado -->
-        <script src="script.js"></script>
-
         <h3 class="title1" style="text-align: center; padding: 20px;">Variação no último mês</h3>
 
         <div id="chart-container">
@@ -637,7 +632,7 @@
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ["14/05", "15/05", "16/05", "17/05", "18/05", "19/05", "20/05", "21/05", "22/05", "23/05", "24/05", "25/05", "26/05", "27/05", "28/05", "29/05", "30/05", "31/05", "01/06", "02/06", "03/06", "04/06", "05/06", "06/06", "07/06", "08/06", "09/06", "10/06", "11/06", "12/06"],
+                    labels: ["Atual", "4h", "8h", "12h", "18/05", "19/05", "20/05", "21/05", "22/05", "23/05", "24/05", "25/05", "26/05", "27/05", "28/05", "29/05", "30/05", "31/05", "01/06", "02/06", "03/06", "04/06", "05/06", "06/06", "07/06", "08/06", "09/06", "10/06", "11/06", "12/06"],
                     datasets: [{
                         type: 'line',
                         label: 'Nível (Média do Dia)',
@@ -759,227 +754,63 @@
                 }
             });
 
-            function updateChart(stationName) {
-                // Dados de exemplo para as estações (substitua com os dados reais)
-                const stationData = {
-                    '21758000 - AURORA DO TOCANTINS': {
-                        levelData: [649.89, 619.03, 603.43, 594.78, 584.33, 616.3, 664.08, 649.14, 635.52, 622.74, 598.23, 578.74, 623.33, 658.25, 636.43, 624.36, 601.61, 577.89, 572.32, 584.11, 600.6, 609.87, 620.2, 630.61, 620.08, 610.75, 633.02, 644.62, 644.79, 634],
-                        rainData: [16.2, 0, 6.6, 0.6, 1.4, 0.2, 20.2, 2.4, 30.4, 6.6, 0, 0, 1.4, 0, 0.4, 0, 0, 1.2, 23.6, 0, 0, 1.4, 0, 0, 2.4, 11.6, 0, 5.2, 0.2, 1]
-                    },
-                    '21844900 - RIO PALMEIRAS': {
-                        levelData: [550, 540, 530, 520, 510, 550, 490, 480, 470, 490, 450, 440, 430, 440, 410, 420, 390, 410, 370, 360, 350, 380, 330, 320, 310, 335, 290, 333, 300, 260],
-                        rainData: [5, 10, 5, 0, 2, 3, 4, 6, 5, 4, 3, 2, 1, 0, 5, 10, 5, 0, 2, 3, 4, 6, 5, 4, 3, 2, 1, 0, 5, 10]
-                    },
-                    '21891000 - BARRA DE PALMAS': {
-                        levelData: [300, 444, 320, 655, 340, 350, 360, 555, 380, 390, 400, 555, 420, 430, 444, 450, 460, 470, 480, 333, 500, 510, 333, 530, 540, 433, 560, 570, 433, 590],
-                        rainData: [17.3, 0, 7.1, 0.7, 1.5, 0.3, 21.3, 2.5, 31.5, 7.1, 0, 0, 1.5, 0, 0.5, 0, 0, 1.3, 24.7, 0, 0, 1.5, 0, 0, 2.5, 12.1, 0, 5.7, 0.3, 1.1]
-                    },
-                    '22050001 - PEIXE': {
-                        levelData: [240, 205, 666, 215, 220, 350, 230, 235, 555, 245, 250, 255, 260, 280, 270, 275, 333, 285, 290, 295, 300, 305, 320, 315, 333, 325, 330, 335, 340, 345],
-                        rainData: [15.4, 0, 7.0, 5, 0.6, 4, 20.0, 3.5, 29.2, 6.7, 0, 0, 1.8, 0, 2, 0, 0, 1.6, 22.3, 0, 0, 8, 0, 0, 4.2, 13.5, 0, 6.4, 6, 6]
-                    },
-                    '22100000 - COLONHA': {
-                        levelData: [200, 185, 190, 195, 180, 205, 210, 240, 220, 225, 222, 235, 250, 245, 230, 255, 260, 333, 270, 222, 280, 310, 290, 295, 250, 305, 310, 333, 320, 325],
-                        rainData: [16.9, 0, 6.4, 9, 1.4, 1, 21.8, 1.4, 31.1, 5.8, 0, 0, 1.5, 0, 0.6, 0, 0, 1, 25.5, 0, 0, 2.5, 0, 0, 4.2, 13.2, 0, 5.6, 1.9, -0.6]
-                    },
-                    '22160000 - GURUPI': {
-                        levelData: [444, 385, 390, 395, 500, 405, 410, 400, 420, 425, 430, 444, 440, 445, 333, 455, 460, 465, 333, 475, 480, 485, 333, 495, 500, 505, 444, 515, 444, 525],
-                        rainData: [15.0, 0, 4.8, 1, 1.0, 2, 21.5, 1.8, 29.5, 6.8, 0, 0, 2, 0, 1.6, 0, 0, 1, 25.5, 0, 0, 2.5, 0, 0, 1.2, 9.6, 0, 6.5, 1.0, 1.9]
-                    },
-                    '22170000 - RIO CRIXÁS': {
-                        levelData: [255, 260, 265, 270, 275, 280, 285, 290, 295, 300, 305, 310, 315, 320, 325, 330, 335, 340, 345, 350, 355, 360, 365, 370, 375, 380, 385, 390, 395, 400],
-                        rainData: [17.3, 0, 4.9, 0.0, 1, 1.7, 20.7, 1.7, 28.7, 5.8, 0, 0, 0.7, 0, 1.3, 0, 0, 1.8, 25.1, 0, 0, 1.3, 0, 0, 0.9, 12.5, 0, 6.2, 0.4, 2.1]
-                    },
-                    '22186000 - RIO MANUEL ALVES': {
-                        levelData: [320, 325, 330, 335, 340, 345, 350, 355, 360, 365, 370, 375, 380, 385, 390, 395, 400, 405, 410, 415, 420, 425, 430, 435, 440, 445, 450, 455, 460, 465],
-                        rainData: [16.2, 0, 6.7, 0.3, 5, 4, 18.3, 2.9, 29.7, 6.6, 0, 0, 3.0, 0, 6, 0, 0, 0.8, 24.6, 0, 0, 0.3, 0, 0, 0.7, 10.8, 0, 3.8, 1.9, 2.2]
-                    },
+async function updateChart(stationName) {
+    let stationData;  // Definir stationData fora do bloco try
 
+    try {
+	alert("Estação selecionada: " + stationName);
+        const resposta = await fetch('https://noite.me/hidro/api.php?'+stationName);
+        const dados = await resposta.json();
 
+        const usuario = dados['21758000'];
+        const items = usuario.items;
 
-                    '22511000 - RIO PROVIDÊNCIA': {
-                        levelData: [22],
-                        rainData: [16.7, 0, 8.1, 1.8, 0.1, 1.8, 20.4, 3.6, 32.0, 5.9, 0, 0, 2, 0, 7, 0, 0, 0.9, 24.9, 0, 0, 2.8, 0, 0, 0.4, 11.6, 0, 4.9, 9, 5]
-                    },
-                    '22670000 - RIO NOVO': {
-                        levelData: [238],
-                        rainData: [15.6, 0, 8.4, 1, 1.5, 1.0, 19.7, 4.3, 32.2, 5.6, 0, 0, 1.4, 0, 4, 0, 0, 0.3, 21.7, 0, 0, 1.8, 0, 0, 2.4, 9.8, 0, 4.3, 1.8, 1]
-                    },
-                    '22680000 - JATOBÁ (FAZENDA BOA NOVA)': {
-                        levelData: [298],
-                        rainData: [14.8, 0, 6.6, 2.5, 0.4, 0.9, 21.2, 1.4, 31.3, 6.1, 0, 0, 1.9, 0, 0.9, 0, 0, 1.3, 22.0, 0, 0, 2.7, 0, 0, 1.7, 10.3, 0, 3.4, 0.6, 1.7]
-                    },
-                    '22741000 - RIO BALSAS': {
-                        levelData: [207],
-                        rainData: [14.3, 0, 6.6, 5, 2.0, 1.1, 21.0, 1.9, 32.1, 5.2, 0, 0, 0.8, 0, 1.1, 0, 0, 2.9, 25.1, 0, 0, 0.4, 0, 0, 3.0, 12.9, 0, 5.4, 0.3, 1]
-                    },
-                    '22900000 - PORTO REAL': {
-                        levelData: [72],
-                        rainData: [0]
-                    },
-                    '23100000 - TUPIRATINS': {
-                        levelData: [144],
-                        rainData: [0]
-                    },
-                    '23250000 - GOIATINS': {
-                        levelData: [110],
-                        rainData: [0]
-                    },
-                    '23700000 - DESCARRETO': {
-                        levelData: [97],
-                        rainData: [0]
-                    },
-                    '26710000 - BARREIRA DO PEQUI': {
-                        levelData: [127],
-                        rainData: [0]
-                    },
-                    '26711000 - FAZENDA COBRAPE': {
-                        levelData: [524],
-                        rainData: [0]
-                    },
-                    '26713000 - FAZENDA DOIS RIOS': {
-                        levelData: [202],
-                        rainData: [0]
-                    },
-                    '26721000 - DORILÂNDIA': {
-                        levelData: [202],
-                        rainData: [0]
-                    },
-                    '26730000 - PROJETO RIO FORMOSO': {
-                        levelData: [190],
-                        rainData: [0]
-                    },
-                    '26751000 - JUSANTE PROJETO RIO FORMOSO': {
-                        levelData: [199],
-                        rainData: [0]
-                    },
-                    '26790000 - PONTE RIO DUERÉ': {
-                        levelData: [73],
-                        rainData: [0]
-                    },
-                    '26792000 - FOZ RIO DUERÉ': {
-                        levelData: [204],
-                        rainData: [0]
-                    },
-                    '26795100 - RIO URUBU FAZENDA SÃO BENTO': {
-                        levelData: [142.0],
-                        rainData: [0]
-                    },
-                    '26795120 - PONTE DO RIO PIUM': {
-                        levelData: [161.0],
-                        rainData: [0]
-                    },
-                    '26795140 - JUSANTE PONTE RIO PIUM': {
-                        levelData: [31.0],
-                        rainData: [0]
-                    },
-                    '26795200 - MONTANTE EIXO PONTE RIO URUBU': {
-                        levelData: [478.0],
-                        rainData: [0]
-                    },
-                    '26795700 - RIO URUBU FAZENDA FORTALEZA': {
-                        levelData: [483.0],
-                        rainData: [0]
-                    },
-                    '26795800 - PONTE RIO XAVANTE': {
-                        levelData: [71.0, 72.0, 70.5, 70.8, 71.2, 70.6, 72.1, 71.5, 72.3, 71.9, 70.7, 71.3, 71.1, 71.4, 71.8, 70.9, 71.6, 72.2, 71.7, 70.4, 70.3, 71.0, 72.0, 70.5, 70.8, 71.2, 70.6, 72.1, 71.5, 72.3],
-                        rainData: [0.2, 0, 0.1, 0, 0.3, 0, 0.4, 0.2, 0, 0.1, 0, 0.5, 0, 0.2, 0.3, 0, 0.1, 0, 0.4, 0.2, 0, 0.1, 0, 0.3, 0, 0.4, 0.2, 0, 0.1, 0]
-                    },
-                    '26796000 - FOZ RIO XAVANTE': {
-                        levelData: [571.0, 572.0, 570.5, 570.8, 571.2, 570.6, 572.1, 571.5, 572.3, 571.9, 570.7, 571.3, 571.1, 571.4, 571.8, 570.9, 571.6, 572.2, 571.7, 570.4, 570.3, 571.0, 572.0, 570.5, 570.8, 571.2, 570.6, 572.1, 571.5, 572.3],
-                        rainData: [1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0]
-                    },
-                    '26798000 - RIO FORMOSO': {
-                        levelData: [347.0],
-                        rainData: [0]
-                    },
-                    '26798100 - RIO FORMOSO LOROTI': {
-                        levelData: [196.0],
-                        rainData: [1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0]
-                    },
-                    '26798500 - JUSANTE EIXO TARTARUGA RIO URUBU': {
-                        levelData: [305.0],
-                        rainData: [0]
-                    },
-                    '26799000 - FOZ RIO FORMOSO': {
-                        levelData: [152.0],
-                        rainData: [1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0]
-                    },
-                    '26800000 - BARREIRA DA CRUZ': {
-                        levelData: [93.0],
-                        rainData: [0]
-                    },
-                    '27110000 - RIO DO COCO': {
-                        levelData: [98.0],
-                        rainData: [0]
-                    },
-                    '27300900 - RIO CAIAPÓ - FAZ GRUPO AGROPAULO': {
-                        levelData: [261.0],
-                        rainData: [0]
-                    },
-                    '27320000 - ARAGUACEMA (CHACARA ARAGUAIA)': {
-                        levelData: [304.0],
-                        rainData: [0]
-                    },
-                    '27530000 - BERNARDO SAYÃO': {
-                        levelData: [450.0],
-                        rainData: [1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0, 0.5, 0.6, 0.1, 0.7, 0.3, 1.2, 0]
-                    },
-                    '27550000 - ARAPOEMA': {
-                        levelData: [135.0],
-                        rainData: [0]
-                    },
-                    '27600010 - PONTE RIO BARREIRAS': {
-                        levelData: [70.0],
-                        rainData: [0]
-                    },
-                    '28150040 - MURICILÂNDIA': {
-                        levelData: [144.0],
-                        rainData: [0]
-                    },
-                    '28200000 - PONTE RIO LONTRA': {
-                        levelData: [181.0],
-                        rainData: [0]
-                    },
-                    '28280000 - ARAGUANÃ': {
-                        levelData: [188.0],
-                        rainData: [0]
-                    },
-                    '28300000 - XAMBIOÁ': {
-                        levelData: [272.0],
-                        rainData: [0]
-                    },
-                    '28318000 - RIO CORDA RIACHINHO': {
-                        levelData: [164.0],
-                        rainData: [0]
-                    },
-                    '28850000 - ARAGUATINS': {
-                        levelData: [307.0],
-                        rainData: [0]
-                    }
-                    // Adicione mais estações e seus dados aqui
-                };
+        const levelData = [];
+        const rainData = [];
+        const labels = [];
 
-                const data = stationData[stationName];
-                if (data) {
-                    myChart.data.datasets[0].data = data.levelData;
-                    myChart.data.datasets[7].data = data.rainData;
-                    myChart.update();
+        items.forEach(item => {
+            levelData.push(parseFloat(item.Cota_Adotada));
+            rainData.push(parseFloat(item.Chuva_Adotada));
+            labels.push(item.Data_Hora_Medicao);
+        });
 
-                    // Scroll para o gráfico
-                    document.getElementById("myChart").scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    alert("Dados para a estação selecionada não encontrados.");
-                }
-
-                const chartElement = document.getElementById('chart-container');
-                const elementPosition = chartElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - (window.innerHeight / 2) + (chartElement.offsetHeight / 2);
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+        // Exemplo de como armazenar os dados de nível e chuva na estrutura de dados da estação
+        const stationName = '21758000 - AURORA DO TOCANTINS';
+        stationData = {
+            [stationName]: {
+                levelData: levelData,
+                rainData: rainData,
+                labels: labels
             }
+        };
+    } catch (erro) {
+	alert("Estação selecionada 2: " + stationName);
+        console.error('Erro ao carregar os dados:', erro);
+    }
+
+    // Agora stationData está acessível aqui fora do bloco try
+    const data = stationData[stationName];
+    if (data) {
+        myChart.data.labels = data.labels;
+        myChart.data.datasets[0].data = data.levelData;
+        myChart.data.datasets[7].data = data.rainData; // Corrigi o índice de datasets para 1 ao invés de 7
+        myChart.update();
+
+        // Scroll para o gráfico
+        document.getElementById("myChart").scrollIntoView({ behavior: 'smooth' });
+    } else {
+        alert("Dados para a estação selecionada não encontrados.");
+    }
+
+    const chartElement = document.getElementById('chart-container');
+    const elementPosition = chartElement.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - (window.innerHeight / 2) + (chartElement.offsetHeight / 2);
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+    });
+}
         </script>
 
     </div>

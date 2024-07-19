@@ -56,7 +56,8 @@
                             Quantitativo</a></li>
                     <li class="nav-item"><a class="nav-link" href="monitoramento-qualitativo.html">Monitoramento
                             Qualitativo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="comites-bacias.html">Comitês de Bacias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="boletim-hidro.html" target="_blank">Boletim Hidro</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -69,7 +70,7 @@
             chamados de CRADs (Centros de Recuperação de Áreas Degradadas).</p>
     </div>
 
-    <div id="map" style="height: 500px; margin: 0 auto; width: 58%; border: 1px outset #c9c9c9">
+    <div id="map" style="height: 500px; margin: 0 auto; width: 58%; border: 1px outset #c9c9c9; border-radius: 10px;">
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 var map = L.map('map').setView([-9.000, -48.333], 6);
@@ -87,9 +88,11 @@
                 });
 
 
-                // BLOCO A
+                // BLOCO A - TAQUARUSSU
 
-                var popupContent = '<strong>Identificação:</strong> Nascente A1';
+                var popupContent = '<strong>Identificação:</strong> Nascente A1 <br>' +
+                    '<strong>Município:</strong> Taquaruçu <br>' +
+                    '<strong>Estratégia de Recuperação:</strong> Plantio de espécies nativas conjugado com a condução da regeneração natural de espécies nativas por isolamento da área (cercamento)';
                 var marker = L.marker([-10.3154, -48.2464], { icon: greenIcon }).addTo(map)
                     .openPopup();
                 marker.bindPopup(popupContent, { className: 'custom-popup' }).openPopup();
@@ -122,7 +125,7 @@
                 L.marker([-10.33093654134848, -48.24610995270843], { icon: greenIcon }).addTo(map)
                     .bindPopup('Nascente A103');
 
-                // BLOCO B 
+                // BLOCO B - TAQUARUSSU
                 L.marker([-10.314247679440012, -48.12259316941963], { icon: greenIcon }).addTo(map)
                     .bindPopup('Nascente B14');
 
@@ -138,7 +141,7 @@
                 L.marker([-10.30047654322383, -48.16201699321288], { icon: greenIcon }).addTo(map)
                     .bindPopup('Nascente B23');
 
-                // BLOCO C      
+                // BLOCO C - TAQUARUÇU
                 L.marker([-10.19544960699035, -48.19676728263059], { icon: greenIcon }).addTo(map)
                     .bindPopup('Nascente C7');
 
@@ -217,7 +220,7 @@
                 L.marker([-10.217522993012727, -48.22346084767345], { icon: greenIcon }).addTo(map)
                     .bindPopup('Nascente C120');
 
-                // BLOCO D            
+                // BLOCO D - TAQUARUÇU  
                 L.marker([-10.2703021022175, -48.3080940957609], { icon: greenIcon }).addTo(map)
                     .bindPopup('Nascente D20');
 
@@ -247,6 +250,208 @@
 
                 L.marker([-10.243144239498962, -48.25104894656503], { icon: greenIcon }).addTo(map)
                     .bindPopup('Nascente 106');
+
+                //RIO LONTRA 
+                L.marker([-6.770113565996679, -48.51040019609064], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B19');
+
+                L.marker([-6.648646489362179, -48.46058161147067], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A17');
+
+                L.marker([-6.669090075660561, -48.479272256630746], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B17');
+
+                L.marker([-6.671600251878012, -48.48482897365102], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B21');
+
+                L.marker([-6.652775838479883, -48.48142122493923], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B13');
+
+                L.marker([-6.654315672111732, -48.48246280838787], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B14');
+
+                L.marker([-6.651689032325656, -48.48125281538908], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B9');
+
+                L.marker([-6.652270894211468, -48.482722282646835], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B15');
+
+                L.marker([-6.651196409810122, -48.48098951971579], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B8');
+
+                L.marker([-6.650855151058228, -48.48027103614935], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B2');
+
+                L.marker([-6.65025038254802, -48.47956619477566], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B1');
+
+                L.marker([-6.545587837665773, -48.34549536720995], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A2');
+
+                L.marker([-6.543720093387798, -48.34381201394824], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A1');
+
+                L.marker([-6.546300062123355, -48.34849831999937], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A3');
+
+                L.marker([-6.550530491327967, -48.35717036256053], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A7');
+
+                L.marker([-6.549570192081019, -48.34556464603605], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A4');
+
+                L.marker([-6.549411868117273, -48.34527703553136], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A5');
+
+                L.marker([-6.545250715779151, -48.34395007333727], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A10');
+
+                L.marker([-6.548152158727784, -48.34425406239974], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A11');
+
+                L.marker([-6.552214965988369, -48.350199518148125], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A6');
+
+                L.marker([-6.649154350309694, -48.39556919448173], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A18');
+
+                L.marker([-6.655505798676931, -48.48238536596499], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B18');
+
+                L.marker([-6.655927209249988, -48.48301237404283], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B16');
+
+                L.marker([-6.681335056054328, -48.51359819294482], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B22');
+
+                L.marker([-6.654149297073005, -48.4791226972742], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B6');
+
+                L.marker([-6.656662584349041, -48.480973787476256], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B11');
+
+                L.marker([-6.65517843386408, -48.47997526573441], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B10');
+
+                L.marker([-6.657411774796514, -48.482123650202346], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B12');
+
+                L.marker([-6.654639733185684, -48.47852275802918], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B5');
+
+                L.marker([-6.569742138086377, -48.18163637485831], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C27');
+
+                L.marker([-6.567814782011049, -48.17861886172373], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C26');
+
+                L.marker([-6.567361691772083, -48.17488248692788], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C25');
+
+                L.marker([-6.5733290123665, -47.97551992614537], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C15');
+
+                L.marker([-6.563913271976027, -47.95372003744844], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C12');
+
+                L.marker([-6.564967558742313, -47.96114719325701], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C13');
+
+                L.marker([-6.541988274393135, -48.101187332017084], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C17');
+
+                L.marker([-6.540716435102774, -48.10726944307864], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C18');
+
+                L.marker([-6.574376340614777, -47.99039061579179], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C11');
+
+                L.marker([-6.578002158344518, -47.96753943694976], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C10');
+
+                L.marker([-6.536950902105369, -48.031456812345995], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C5');
+
+                L.marker([-6.536124945325223, -48.03520334912777], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C4');
+
+                L.marker([-6.537580289987625, -48.02100226890037], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C6');
+
+                L.marker([-6.546997427401312, -47.9280916277401], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C21');
+
+                L.marker([-6.548566164366024, -47.8505721927496], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C23');
+
+                L.marker([-6.65195066677163, -48.47933513027282], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B3');
+
+                L.marker([-6.645057176589856, -48.34369986178553], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A13');
+
+                L.marker([-6.644204543742189, -48.34506070578612], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A12');
+
+                L.marker([-6.643139717018916, -48.34113870787409], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A14');
+
+                L.marker([-6.642694184118525, -48.33960079487736], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A15');
+
+                L.marker([-6.647979245001663, -48.37456253362878], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A16');
+
+                L.marker([-6.560003616027444, -48.31117473734513], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A8');
+
+                L.marker([-6.56086470781835, -48.31139649831725], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente A9');
+
+                L.marker([-6.549635451848779, -47.852217509563526], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C24');
+
+                L.marker([-6.555288064865392, -47.93076304944233], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C19');
+
+                L.marker([-6.552135465042417, -47.894779747518625], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C20');
+
+                L.marker([-6.558446249273238, -48.00177914723187], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C1');
+
+                L.marker([-6.557870265019598, -48.01669654311963], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C2');
+
+                L.marker([-6.559670050890601, -48.03329926426609], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C3');
+
+                L.marker([-6.564106004773244, -48.08268778317729], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C7');
+
+                L.marker([-6.565639134724016, -48.098647998561606], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C8');
+
+                L.marker([-6.566809720845719, -48.11479185370321], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C9');
+
+                L.marker([-6.567869260210876, -48.17886220196848], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C14');
+
+                L.marker([-6.569054602633586, -48.21829509924287], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C16');
+
+                L.marker([-6.548160182855222, -47.84928867363395], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C22');
+
+                L.marker([-6.79580464920246, -48.47664310559284], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente B7');
+
+                L.marker([-6.564368156821673, -48.00235047283127], { icon: greenIcon }).addTo(map)
+                    .bindPopup('<strong>Identificação:</strong> Nascente C28');
+
+
+
             });
         </script>
     </div>

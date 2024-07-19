@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletim Hidrometeorológico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+    <style>
+        /* Estilos gerais formato A4 com margens de 0 mm */
+        body {
+            width: 210mm;
+            height: 297mm;
+            padding: 0;
+            margin: auto;
+            font-family: Arial, sans-serif;
+            background: #fff;
+        }
+
+        .sheet {
+            width: 210mm;
+            height: 297mm;
+            box-shadow: 0 0 5mm rgba(0, 0, 0, 0.2);
+            position: relative;
+            box-sizing: border-box;
+            margin-bottom: 25px;
+            page-break-after: always;
+            /* Garante que uma nova página seja iniciada após cada .sheet */
+
+        }
+
+        .sheet-tables {
+            width: 210mm;
+            height: auto;
+            box-shadow: 0 0 5mm rgba(0, 0, 0, 0.2);
+            position: relative;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            page-break-after: always;
+            /* Garante que uma nova página seja iniciada após cada .sheet */
+
+        }
+
+
+        /*MAIN CONTENT*/
+
+        .main-content {
+            margin-left: 10mm;
+            margin-right: 10mm;
+            padding-bottom: 30mm;
+
+            /* Adicionado para evitar sobreposição do conteúdo com o footer */
+            h2,
+            h {
+                font-family: arial;
+                font-weight: bold;
+                text-align: center;
+                font-size: 20px;
+                margin-top: 20px;
+            }
+
+            .container {
+                text-align: center;
+
+                & img {
+                    height: 860px;
+                }
+            }
+
+        }
+
+        .main-content3 {
+            align-items: center;
+            margin-left: 10mm;
+            margin-right: 10mm;
+            padding-top: 20px;
+            padding-bottom: 25mm;
+            /* Altura do footer para espaço interno, se necessário */
+            /* Adicionado para evitar sobreposição do conteúdo com o footer */
+
+            & p {
+                text-align: left;
+                font-size: 10px;
+                margin-left: 25px;
+                margin-top: -45px;
+
+            }
+
+        }
+
+        /*CONTAINER*/
+        .container {
+            & img {
+                max-width: 100%;
+                height: 920px;
+                object-fit: cover;
+            }
+        }
+
+        .container2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+            & img {
+                max-width: 100%;
+                height: 860px;
+                object-fit: cover;
+            }
+
+            & h,
+            h2 {
+                font-size: 20px;
+                text-align: center;
+                font-family: Arial;
+                font-weight: bold;
+
+            }
+
+        }
+
+        .container3 {
+            object-fit: cover;
+            margin-bottom: 10mm;
+            /* Adiciona margem inferior para evitar sobreposição com o footer */
+            page-break-inside: avoid;
+            /* Evita quebras de página dentro das páginas */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+            & h {
+                font-size: 20px;
+                text-align: center;
+                font-family: Arial;
+                font-weight: bold;
+                padding-bottom: 5px;
+            }
+
+            & h2 {
+                font-size: 20px;
+                text-align: center;
+                font-family: Arial;
+                font-weight: bold;
+                padding-bottom: 15px;
+            }
+
+            & img {
+                max-width: 100%;
+                height: 400px;
+                object-fit: cover;
+                margin-bottom: 20px;
+            }
+
+            & iframe {
+                border: none;
+                margin-bottom: 2px;
+            }
+
+        }
+
+        .container-climate {
+            object-fit: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+            & h {
+                font-size: 20px;
+                text-align: center;
+                font-family: Arial;
+                font-weight: bold;
+                padding-bottom: 20px;
+            }
+
+            & .iframe-climate {
+                margin-bottom: 50px;
+                width: 90%;
+                height: 400px;
+                border: 1px solid black;
+
+                & iframe {
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    pointer-events: none;
+                    overflow: hidden;
+                }
+            }
+
+            & .img-climate {
+                margin-bottom: 50px;
+                width: 90%;
+                height: 100%;
+                border: 1px solid rgb(131, 131, 131);
+
+                & img {
+                    max-width: 100%;
+                    height: 100%;
+                }
+            }
+
+            & .assinatura-gerente {
+                text-align: center;
+                margin-top: 40px;
+                font-size: 14px;
+                margin-left: 0px;
+            }
+
+            & .assinatura-diretor {
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 50px;
+                font-size: 14px;
+                margin-left: 0px;
+            }
+        }
+
+        .container3 .table-header {
+            display: table-header-group;
+        }
+
+        .container-capa {
+            & img {
+                max-width: 100%;
+                height: 870px;
+                object-fit: cover;
+                margin-bottom: 70px;
+            }
+        }
+
+        header {
+            text-align: center;
+            padding-left: 10mm;
+            padding-right: 10mm;
+            height: 25mm;
+            align-items: center;
+        }
+
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            bottom: 0;
+            width: calc(100%);
+            padding-left: 10mm;
+            padding-right: 10mm;
+            height: 25mm;
+            /* Ajuste conforme necessário */
+            box-sizing: border-box;
+        }
+
+
+        .footer-left {
+            flex: 1;
+            text-align: left;
+
+            & img {
+                height: 50px;
+            }
+        }
+
+        .footer-center {
+            flex: 1;
+            text-align: center;
+
+            & img {
+                height: 30px;
+            }
+        }
+
+        .footer-right {
+            flex: 1;
+            text-align: right;
+
+            & img {
+                height: 50px;
+            }
+        }
+
+
+        table {
+            max-width: 95%;
+            border-collapse: collapse;
+            font-size: 12px;
+            text-align: left;
+            margin-left: 20px;
+            margin-right: 20px;
+            padding: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: rgb(4, 76, 184);
+            color: #f5f5f5;
+        }
+
+        /* Alternar cores das linhas */
+        tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #9acef8;
+        }
+
+        tr:hover {
+            background-color: #ffffff;
+        }
+
+        /* Centralização de células */
+        th,
+        td {
+            text-align: center;
+            align-items: center;
+        }
+
+        .logo {
+            text-align: right;
+        }
+
+        .chart-container {
+            display: inline-block;
+            /* Mantém os gráficos em linha, mas centralizados */
+            margin: auto;
+            /* Centraliza horizontalmente */
+            text-align: center;
+            /* Centraliza o conteúdo interno */
+            width: 100%;
+            /* Ajuste a largura conforme necessário */
+        }
+
+        /* Estilo para dividir em duas colunas */
+        #graficos-geral {
+            display: grid;
+            gap: 10px;
+        }
+
+        .grafico-container {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+
+    <!--*Estilos para impressão-->
+
+    <style>
+        @media print {
+            @page {
+                margin: 20px;
+            }
+
+            body,
+            .sheet,
+            .sheet-tables {
+                width: 100%;
+                height: auto;
+                page-break-after: always;
+            }
+
+            table {
+                page-break-inside: auto;
+            }
+
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+
+            tfoot {
+                display: table-footer-group;
+            }
+
+            .container-capa {
+                margin-top: 35px;
+                margin-bottom: 35px;
+                height: 1250px;
+
+                & img {
+                    height: 1200px;
+                    width: 100%;
+                }
+
+            }
+
+            .main-content {
+
+                & h2 {
+                    font-size: 28px;
+                    text-align: center;
+                    font-family: Arial;
+                    font-weight: bold;
+                    margin-top: 30px;
+                    margin-bottom: 0px;
+                }
+
+                & .container {
+                    text-align: center;
+                    height: 1225px;
+
+                    & img {
+                        padding: 0;
+                        height: 1250px;
+                    }
+                }
+            }
+
+            .main-content3 {
+                & p {
+                    font-size: 14px;
+                }
+            }
+
+            .container3{
+                
+                & img{
+                height: 600px;
+                width: 100%;
+                margin-left: 40px;
+
+                & iframe {
+                    height: 400px;
+                    width: 100%;
+                    margin-left: -10px;
+                }
+
+            }}
+
+            .container3,
+            .container-climate {
+                & h {
+                    font-size: 26px;
+                    text-align: center;
+                    font-family: Arial;
+                    font-weight: bold;
+                    margin-top: 30px;
+                    margin-bottom: 25px;
+                }
+            }
+
+            .assinatura-gerente {
+                text-align: center;
+                margin-top: 40px;
+                font-size: 18px;
+                margin-left: 0px;
+            }
+
+            .assinatura-diretor {
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 50px;
+                font-size: 18px;
+                margin-left: 0px;
+            }
+
+            header {
+                text-align: center;
+                padding-left: 10mm;
+                padding-right: 10mm;
+                height: 25mm;
+                align-items: center;
+
+                & div {
+                    font-size: 18px;
+                    font-family: arial;
+                }
+            }
+
+            header img {
+                height: 80px;
+            }
+
+
+            .footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: absolute;
+                width: calc(100%);
+                padding-left: 10mm;
+                padding-right: 10mm;
+                /* Ajuste conforme necessário */
+                box-sizing: border-box;
+            }
+
+
+            .footer-left {
+                flex: 1;
+                text-align: left;
+
+                & img {
+                    height: 75px;
+                }
+            }
+
+            .footer-center {
+                flex: 1;
+                text-align: center;
+
+                & img {
+                    height: 45px;
+                }
+            }
+
+            .footer-right {
+                flex: 1;
+                text-align: right;
+
+                & img {
+                    height: 75px;
+                }
+            }
+
+            table {
+                max-width: 95%;
+                border-collapse: collapse;
+                font-size: 12px;
+                text-align: left;
+                margin-left: 20px;
+                margin-right: 20px;
+                padding: 20px;
+            }
+
+            th,
+            td {
+                padding: 12px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            th {
+                background-color: rgb(4, 76, 184);
+                color: #f5f5f5;
+            }
+
+            /* Alternar cores das linhas */
+            tr:nth-child(even) {
+                background-color: #ffffff;
+            }
+
+            tr:nth-child(odd) {
+                background-color: #9acef8;
+            }
+
+            tr:hover {
+                background-color: #ffffff;
+            }
+
+            /* Centralização de células */
+            th,
+            td {
+                text-align: center;
+                align-items: center;
+            }
+
+            .logo {
+                text-align: right;
+            }
+
+            .chart-container {
+                display: flex;
+                /* Usar Flexbox para layout flexível */
+                justify-content: center;
+                /* Centralizar conteúdo horizontalmente */
+                flex-wrap: wrap;
+                /* Permitir que os itens quebrem em várias linhas, se necessário */
+                width: 100%;
+                /* Ajuste a largura conforme necessário */
+                margin: 0 auto;
+                /* Centralizar o contêiner */
+                padding-top: 10px;
+                text-align: center;
+                /* Centralizar o texto dentro dos elementos do contêiner */
+             
+            }
+
+            .chart-container:nth-child(2n) {
+                page-break-after: auto;
+                margin-top: 100px;
+                padding-top: 100px;
+
+            }
+
+
+            /* Estilo para dividir em duas colunas */
+            #graficos-geral {
+                size: 600px;
+                display: grid;
+                gap: 10px;
+            }
+
+            .grafico-container {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+
+    <style>
+        #loading {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #loading img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+
+    <style>
+        #pdfLinks {
+            margin-top: 20px;
+        }
+
+        .pdf-link {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body class="A4">
+    <div id="loading">
+        <img src="https://i.gifer.com/ZZ5H.gif" alt="Carregando...">
+        <div style="margin-left: 10px;">Carregando Dados</div>
+    </div>
+
+    <!--PÁGINA 1 - CAPA -->
+    <section class="sheet">
+        <header class="bg-light py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="./img/TO_logo.png" alt="Logo">
+                <div class="logo" style="font-size: 14px; color: rgb(0, 19, 192);">
+                    <div>BOLETIM HIDROMETEOROLÓGICO</div>
+                    <div class="numeroData"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="container-capa">
+                <img src="./img/capadoboletimhidro.jpg" alt="capa">
+            </div>
+        </div>
+        <footer class="footer bg-light">
+            <div class="footer-left">
+                <img src="./img/smarh-to-novalogo.png" alt="semarh">
+            </div>
+            <div class="footer-center">
+                <img src="./img/logo_defesacivil.png" alt="defesacivil">
+            </div>
+            <div class="footer-right">
+                <img src="./img/Logotipo_ANA.png" alt="ana">
+            </div>
+        </footer>
+    </section>
+
+    <!--PÁGINA 2 - MAPA DA REDE HIDROMETEOROLÓGICA-->
+    <section class="sheet">
+        <header class="bg-light py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="./img/TO_logo.png" alt="Logo">
+                <div class="logo" style="font-size: 14px; color: rgb(0, 19, 192);">
+                    <div>BOLETIM HIDROMETEOROLÓGICO</div>
+                    <div class="numeroData"></div>
+
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <h2>REDE DE MONITORAMENTO HIDROMETEOROLÓGICO <br> DO ESTADO DO TOCANTINS</h2>
+            <div class="container">
+                <div>
+                    <img src="./img/mapadoboletim_pag2.jpg" alt="mapa">
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer bg-light">
+            <div class="footer-left">
+                <img src="./img/smarh-to-novalogo.png" alt="semarh">
+            </div>
+            <div class="footer-center">
+                <img src="./img/logo_defesacivil.png" alt="defesacivil">
+            </div>
+            <div class="footer-right">
+                <img src="./img/Logotipo_ANA.png" alt="ana">
+            </div>
+        </footer>
+    </section>
+
+    <!--PÁGINA 3 - DADOS DE PRECIPITAÇÃO -->
+    <div class="sheet-tables">
+        <header class="bg-light py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="./img/TO_logo.png" alt="Logo">
+                <div class="logo" style="font-size: 14px; color: rgb(0, 19, 192);">
+                    <div>BOLETIM HIDROMETEOROLÓGICO</div>
+                    <div class="numeroData"></div>
+
+                </div>
+            </div>
+        </header>
+        <!-- DADOS DE CHUVA -->
+        <div class="main-content3">
+            <div class="container3">
+                <h>ÚLTIMOS DADOS DE PRECIPITAÇÃO ACUMULADA - 96h <br> CHUVA (mm)</h>
+                <table id="tabela-chuva" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nome</th>
+                            <th>Data/Hora</th>
+                            <th>ATUAL</th>
+                            <th>4h</th>
+                            <th>8h</th>
+                            <th>12h</th>
+                            <th>24h</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <footer class="footer bg-light">
+            <div class="footer-left">
+                <img src="./img/smarh-to-novalogo.png" alt="semarh">
+            </div>
+            <div class="footer-center">
+                <img src="./img/logo_defesacivil.png" alt="defesacivil">
+            </div>
+            <div class="footer-right">
+                <img src="./img/Logotipo_ANA.png" alt="ana">
+            </div>
+        </footer>
+
+    </div>
+
+    <!--PÁGINA 4 - DADOS DE NÍVEL -->
+    <section class="sheet-tables">
+        <header class="bg-light py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="./img/TO_logo.png" alt="Logo">
+                <div class="logo" style="font-size: 14px; color: rgb(0, 19, 192);">
+                    <div>BOLETIM HIDROMETEOROLÓGICO</div>
+                    <div class="numeroData"></div>
+
+                </div>
+            </div>
+        </header>
+        <!-- DADOS DE NÍVEL -->
+        <div class="main-content3">
+            <div class="container3">
+                <h>ÚLTIMOS DADOS MEDIDOS - 96h <br> NÍVEL (cm)</h>
+                <table id="tabela-nivel" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nome</th>
+                            <th>Data/Hora</th>
+                            <th>ATUAL</th>
+                            <th>4h</th>
+                            <th>8h</th>
+                            <th>12h</th>
+                            <th>24h</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <footer class="footer bg-light">
+            <div class="footer-left">
+                <img src="./img/smarh-to-novalogo.png" alt="semarh">
+            </div>
+            <div class="footer-center">
+                <img src="./img/logo_defesacivil.png" alt="defesacivil">
+            </div>
+            <div class="footer-right">
+                <img src="./img/Logotipo_ANA.png" alt="ana">
+            </div>
+        </footer>
+        <div class="page-break-before">
+            <!-- Conteúdo da próxima página -->
+        </div>
+    </section>
+
+    <!--SEÇÃO 5 - DADOS DE VAZÃO -->
+    <section class="sheet-tables">
+        <header class="bg-light py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="./img/TO_logo.png" alt="Logo">
+                <div class="logo" style="font-size: 14px; color: rgb(0, 19, 192);">
+                    <div>BOLETIM HIDROMETEOROLÓGICO</div>
+                    <div class="numeroData"></div>
+
+                </div>
+            </div>
+        </header>
+        <!-- DADOS DE VAZÃO -->
+        <div class="main-content3">
+            <div class="container3">
+                <h>ÚLTIMOS DADOS ESTIMADOS - 96h <br> VAZÃO (m³/s)</h>
+                <table id="tabela-vazao" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nome</th>
+                            <th>Data/Hora</th>
+                            <th>ATUAL</th>
+                            <th>4h</th>
+                            <th>8h</th>
+                            <th>12h</th>
+                            <th>24h</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <footer class="footer bg-light">
+            <div class="footer-left">
+                <img src="./img/smarh-to-novalogo.png" alt="semarh">
+            </div>
+            <div class="footer-center">
+                <img src="./img/logo_defesacivil.png" alt="defesacivil">
+            </div>
+            <div class="footer-right">
+                <img src="./img/Logotipo_ANA.png" alt="ana">
+            </div>
+        </footer>
+        <div class="page-break-before">
+            <!-- Conteúdo da próxima página -->
+        </div>
+    </section>
+
+    <!--SEÇÃO 6 - MONITORAMENTO DAS PCDs -->
+    <section class="sheet-tables">
+        <header class="bg-light py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="./img/TO_logo.png" alt="Logo">
+                <div class="logo" style="font-size: 14px; color: rgb(0, 19, 192);">
+                    <div>BOLETIM HIDROMETEOROLÓGICO</div>
+                    <div class="numeroData"></div>
+
+                </div>
+            </div>
+        </header>
+        <!-- GRAFICOS GERAIS -->
+        <div class="main-content3">
+            <div class="container3">
+                <h>MONITORAMENTO DAS PCD’s - 24h</h>
+                <div id="graficos-geral" style="size: 600px; align-items: center; margin: 0;"></div>
+            </div>
+        </div>
+        <footer class="footer bg-light">
+            <div class="footer-left">
+                <img src="./img/smarh-to-novalogo.png" alt="semarh">
+            </div>
+            <div class="footer-center">
+                <img src="./img/logo_defesacivil.png" alt="defesacivil">
+            </div>
+            <div class="footer-right">
+                <img src="./img/Logotipo_ANA.png" alt="ana">
+            </div>
+        </footer>
+        <div class="page-break-before">
+            <!-- Conteúdo da próxima página -->
+        </div>
+    </section>
+
+    <!--SEÇÃO 7 - MONITORAMENTO DAS UHEs -->
+    <section class="sheet">
+        <header class="bg-light py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="./img/TO_logo.png" alt="Logo">
+                <div class="logo" style="font-size: 14px; color: rgb(0, 19, 192);">
+                    <div>BOLETIM HIDROMETEOROLÓGICO</div>
+                    <div class="numeroData"></div>
+
+                </div>
+            </div>
+        </header>
+        <div class="main-content3">
+            <div class="container3">
+                <img src="./img/baciadoriotocantins.jpg" alt="baciadoriotocantins">
+
+                <iframe src="https://www.ana.gov.br/sarportal/sin-modulo-2.html?bacia=91"
+                    style="width: 100%; height: 380px;"></iframe>
+            </div>
+            <p><b>Obs:</b>Os dados apresentados são brutos e estão sujeitos a consistência.
+                <br><b>Fonte:</b> Operador Nacional do Sistema Elétrico (https://www.ana.gov.br/sar/sin/b_tocantins)
+            </p>
+
+        </div>
+        <footer class="footer bg-light">
+            <div class="footer-left">
+                <img src="./img/smarh-to-novalogo.png" alt="semarh">
+            </div>
+            <div class="footer-center">
+                <img src="./img/logo_defesacivil.png" alt="defesacivil">
+            </div>
+            <div class="footer-right">
+                <img src="./img/Logotipo_ANA.png" alt="ana">
+            </div>
+        </footer>
+        <div class="page-break-before">
+            <!-- Conteúdo da próxima página -->
+        </div>
+    </section>
+
+    <!--SEÇÃO 8 - VAZÕES DEFLUENTES DAS UHEs -->
+    <section class="sheet-tables">
+        <header class="bg-light py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="./img/TO_logo.png" alt="Logo">
+                <div class="logo" style="font-size: 14px; color: rgb(0, 19, 192);">
+                    <div>BOLETIM HIDROMETEOROLÓGICO</div>
+                    <div class="numeroData"></div>
+
+                </div>
+            </div>
+        </header>
+        <div class="main-content">
+            <div class="container">
+                <div id="charts"
+                    style="text-align: center; font-family: Arial; padding: 0; margin-bottom: 20px; margin-top: 20px;">
+                    <h
+                        style="text-align: center; text-transform: uppercase; font-weight: bold; margin-left: 20px; margin-right: 40px; font-family: Arial; padding: 0; margin-bottom: 20px; margin-top: 20px;">
+                        Vazões Defluentes (m³/s) das Usinas Hidrelétricas instaladas no Rio Tocantins
+                    </h>
+                </div>
+                <p style="text-align: center; font-size: 12px;">
+                    <b>Fonte</b>: Defesa Civil (TO) (https://www.to.gov.br/defesacivil/)
+                </p>
+            </div>
+        </div>
+        <footer class="footer bg-light">
+            <div class="footer-left">
+                <img src="./img/smarh-to-novalogo.png" alt="semarh">
+            </div>
+            <div class="footer-center">
+                <img src="./img/logo_defesacivil.png" alt="defesacivil">
+            </div>
+            <div class="footer-right">
+                <img src="./img/Logotipo_ANA.png" alt="ana">
+            </div>
+        </footer>
+        <div class="page-break-before">
+            <!-- Conteúdo da próxima página -->
+        </div>
+    </section>
+
+    <!--SEÇÃO 9 - CODIÇÕES METEOROLÓGICAS -->
+    <section class="sheet-tables">
+        <header class="bg-light py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="./img/TO_logo.png" alt="Logo">
+                <div class="logo" style="font-size: 14px; color: rgb(0, 19, 192);">
+                    <div>BOLETIM HIDROMETEOROLÓGICO</div>
+                    <div class="numeroData"></div>
+
+                </div>
+            </div>
+        </header>
+        <div class="main-content3">
+            <div class="container-climate">
+                <h>CONDIÇÕES METEOROLÓGICAS DE HOJE EM PALMAS - TO</h>
+                <div class="iframe-climate">
+                    <iframe src="https://www.accuweather.com/pt/br/palmas/36879/daily-weather-forecast/36879">
+                    </iframe>
+                </div>
+
+                <p><b>Fonte</b>: AccuWeather
+                    (https://www.accuweather.com/pt/br/palmas/36879/daily-weather-forecast/36879)
+                </p>
+                <div class="img-climate">
+                    <img src="./img/lengenda_defesacivil.png" alt="baciadoriotocantins">
+                </div>
+                <p>
+                    <b>Fonte</b>: Defesa Civil (TO) (https://www.to.gov.br/defesacivil/)
+                </p>
+
+                <!-- Assinaturas na última página -->
+                <p class="assinatura-gerente">
+                    <strong>ROGÉRIO NOLETO PASSOS</strong><br>
+                    Gerente de Hidrometeorologia
+                </p>
+                <p class="assinatura-diretor">
+                    <strong>ALDO ARAÚJO DE AZEVEDO</strong><br>
+                    Diretor de Recursos Hídricos
+                </p>
+            </div>
+        </div>
+
+        <footer class="footer bg-light">
+            <div class="footer-left">
+                <img src="./img/smarh-to-novalogo.png" alt="semarh">
+            </div>
+            <div class="footer-center">
+                <img src="./img/logo_defesacivil.png" alt="defesacivil">
+            </div>
+            <div class="footer-right">
+                <img src="./img/Logotipo_ANA.png" alt="ana">
+            </div>
+        </footer>
+
+    </section>
+
+    <!--INSERIR DATA/ NÚMERO DO BOLETIM/ REPETIR EM TODAS AS PÁGINA -->
+    <script>
+        // Função para obter a data formatada como "23 DE JUNHO DE 2024" em maiúsculas
+        function formatarData(data) {
+            var meses = ['JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'];
+            var dia = data.getDate();
+            var mes = meses[data.getMonth()];
+            var ano = data.getFullYear();
+            return `${dia} DE ${mes} DE ${ano}`; // Convertido para maiúsculas
+        }
+
+        // Obtém a data de hoje
+        var hoje = new Date();
+
+        // Verifica se o ano é 2024 ou não
+        var anoAtual = hoje.getFullYear();
+        var inicioAno = new Date(anoAtual, 0, 1); // 1º de janeiro do ano atual
+
+        // Calcula o número do dia
+        var diaNumero;
+        if (anoAtual === 2024) {
+            // Para o ano de 2024, começando em 01 de julho com o Nº 122
+            var dataInicio = new Date('2024-07-01');
+            var diferencaDias = Math.ceil((hoje.getTime() - dataInicio.getTime()) / (1000 * 3600 * 24));
+            diaNumero = 121 + diferencaDias;
+        } else {
+            // Para outros anos, reiniciando em 1º de janeiro como Nº 001
+            var diferencaDias = Math.ceil((hoje.getTime() - inicioAno.getTime()) / (1000 * 3600 * 24));
+            diaNumero = diferencaDias + 1; // +1 para começar de Nº 001
+        }
+
+        // Formata o número do dia para sempre ter três dígitos
+        var numeroDiaFormatado = ('000' + diaNumero).slice(-3);
+
+        // Formata a data para "23 DE JUNHO DE 2024"
+        var dataFormatada = formatarData(hoje);
+
+        // Insere a data formatada em todos os elementos com a classe 'numeroData'
+        var numeroDataElements = document.querySelectorAll('.numeroData');
+        numeroDataElements.forEach(function (element) {
+            element.innerHTML = `<div>Nº ${numeroDiaFormatado}, ${dataFormatada}</div>`;
+        });
+    </script>
+
+    <script>
+        async function carregarDados() {
+            // Exibe o indicador de carregamento
+            /* document.getElementById('loading').style.display = 'flex';*/
+
+            try {
+                // Faz a requisição para a URL especificada
+                const resposta = await fetch('https://noite.me/hidro/api.php');
+                // Converte a resposta para JSON
+                const dados = await resposta.json();
+
+                // Mapeia os IDs das estações para seus nomes correspondentes
+                const nomesEstacoes = {
+                    22042315: "UHE PEIXE ANGICAL FAZENDA BARREIRO",
+                    22910000: "UHE ESTREITO RIO DO SONO 1",
+                    22741000: "RIO BALSAS",
+                    22900000: "PORTO REAL",
+                    22735080: "PCH ISAMU IKEDA JUSANTE",
+                    22738000: "UHE ESTREITO RIO DAS BALSAS",
+                    22735000: "PCH ISAMU IKEDA MONTANTE 2",
+                    22735050: "PCH ISAMU IKEDA MONTANTE 1",
+                    22735060: "PCH ISAMU IKEDA RIO PONTE ALTA",
+                    22735070: "PCH ISAMU IKEDA BARRAMENTO",
+                    22670000: "RIO NOVO",
+                    22680000: "JATOBÁ (FAZENDA BOA NOVA)",
+                    22685000: "UHE ESTREITO RIO DO SONO 2",
+                    22511000: "RIO PROVIDÊNCIA",
+                    22490200: "CGH LAGEADO BARRAMENTO",
+                    22490300: "CGH LAGEADO JUSANTE",
+                    22490500: "UHE LUÍS EDUARDO MAGALHÃES BARRAMENTO",
+                    22491000: "UHE LUÍS EDUARDO MAGALHÃES JUSANTE",
+                    22491200: "UHE LUÍS EDUARDO MAGALHÃES LUCENA",
+                    22491400: "UHE LUÍS EDUARDO MAGALHÃES TOCANTÍNIA",
+                    22420000: "BARRA CÓRREGO BREJO COMPRIDO",
+                    22490100: "CGH LAGEADO MONTANTE",
+                    22360000: "UHE LUÍS EDUARDO MAGALHÃES MANGUES",
+                    22350200: "UFT AGROTINS",
+                    22320000: "UHE LUÍS EDUARDO MAGALHÃES AREIAS",
+                    22281000: "UHE LUÍS EDUARDO MAGALHÃES IPUEIRAS",
+                    22300000: "UHE LUÍS EDUARDO MAGALHÃES JURUPARY",
+                    22241000: "RIO DO PEIXE - ALMAS - TO",
+                    22250000: "FAZENDA LOBEIRA",
+                    22225080: "PCH AGRO TRAFO RIO BAGAGEM",
+                    22200080: "PCH DIANÓPOLIS JUSANTE",
+                    22220000: "PORTO JERÔNIMO - FAZ. PIRACICABA",
+                    22220001: "UHE LUÍS EDUARDO MAGALHÃES JERÔNIMO",
+                    22186000: "RIO MANUEL ALVES - PORTO ALEGRE DO TO",
+                    22199500: "PCH DIANÓPOLIS BARRAMENTO",
+                    22184100: "PCH MANUEL ALVES MONTANTE",
+                    22184200: "PCH MANUEL ALVES BARRAMENTO",
+                    22184210: "PCH MANUEL ALVES JUSANTE",
+                    22160000: "GURUPI",
+                    22170000: "RIO CRIXÁS",
+                    22151000: "UHE LUÍS EDUARDO MAGALHÃES JACINTO",
+                    22100000: "COLONHA",
+                    22043000: "UHE PEIXE ANGICAL BARRAMENTO",
+                    22045000: "UHE PEIXE ANGICAL JUSANTE",
+                    22050001: "PEIXE",
+                    26710000: "BARREIRA DO PEQUI",
+                    26798500: "JUSANTE EIXO TARTARUGA RIO URUBU",
+                    26799000: "FOZ RIO FORMOSO",
+                    26800000: "BARREIRA DA CRUZ",
+                    26795800: "PONTE RIO XAVANTE",
+                    26796000: "FOZ RIO XAVANTE",
+                    26798000: "RIO FORMOSO",
+                    26795100: "RIO URUBU FAZENDA SÃO BENTO",
+                    26795120: "PONTE DO RIO PIUM",
+                    26795140: "JUSANTE PONTE RIO PIUM",
+                    26795200: "MONTANTE EIXO PONTE RIO URUBU",
+                    26795700: "RIO URUBU FAZENDA FORTALEZA",
+                    26751000: "JUSANTE PROJETO RIO FORMOSO",
+                    26790000: "PONTE RIO DUERÉ",
+                    26792000: "FOZ RIO DUERÉ",
+                    26721000: "DORILÂNDIA",
+                    26730000: "PROJETO RIO FORMOSO",
+                    26711000: "FAZENDA COBRAPE",
+                    26713000: "FAZENDA DOIS RIOS",
+                    28308000: "CGH LAJES MONTANTE",
+                    28310070: "CGH LAJES BARRAMENTO",
+                    28310080: "CGH LAJES JUSANTE",
+                    28318000: "RIO CORDA RIACHINHO",
+                    28280000: "ARAGUANÃ",
+                    28300000: "XAMBIOÁ",
+                    28300100: "UHE TUCURUÍ RIO ARAGUAIA 1",
+                    28150040: "MURICILÂNDIA",
+                    28180000: "CGH LAGEADO RIBEIRÃO LONTRA",
+                    28190080: "CGH LAJES CORUJÃO JUSANTE",
+                    28200000: "PONTE RIO LONTRA",
+                    28850000: "ARAGUATINS",
+                    21860000: "UHE PEIXE ANGICAL FAZENDA NOVA AREIA",
+                    21891000: "BARRA DE PALMAS",
+                    21845000: "PONTE ALTA DO BOM JESUS",
+                    21850000: "UHE PEIXE ANGICAL RIO DA PALMA",
+                    21842000: "PCH LAGOA GRANDE BARRAMENTO",
+                    21843000: "PCH LAGOA GRANDE JUSANTE",
+                    21844900: "RIO PALMEIRAS - TAIPAS",
+                    21829000: "PCH BOA SORTE BARRAMENTO",
+                    21830000: "PCH BOA SORTE JUSANTE",
+                    21835000: "PCH RIACHO PRETO BARRAMENTO",
+                    21836000: "PCH RIACHO PRETO JUSANTE",
+                    21837000: "PCH LAGOA GRANDE RIBEIRÃO DO INFERNO",
+                    21815000: "PCH PORTO FRANCO BARRAMENTO",
+                    21820000: "PCH PORTO FRANCO JUSANTE",
+                    21780250: "PCH AREIA JUSANTE",
+                    21780260: "PCH DOIDO BARRAMENTO",
+                    21780265: "PCH DOIDO JUSANTE",
+                    21780270: "PCH DIACAL II MONTANTE",
+                    21780275: "PCH DIACAL II BARRAMENTO",
+                    21780180: "PCH AGRO TRAFO MONTANTE",
+                    21780200: "PCH ÁGUA LIMPA BARRAMENTO",
+                    21780210: "PCH ÁGUA LIMPA JUSANTE",
+                    21780240: "PCH AREIA BARRAMENTO",
+                    21770080: "CGH TAGUATINGA MONTANTE",
+                    21780080: "PCH AGRO TRAFO RIO PONTE ALTA",
+                    21758000: "AURORA DO TOCANTINS",
+                    21761000: "PCH SOBRADO MONTANTE",
+                    21762000: "PCH SOBRADO BARRAMENTO",
+                    21660000: "UHE PEIXE ANGICAL FAZENDA VISÃO DA SANTANA",
+                    21273300: "CGH SIRIVERA BARRAMENTO",
+                    21273500: "CGH PALMEIRAS BARRAMENTO",
+                    21273550: "CGH SUCURI JUSANTE",
+                    21273600: "CGH PALMEIRAS JUSANTE",
+                    21274000: "PCH PIARUCUM BARRAMENTO",
+                    21080000: "UHE SÃO SALVADOR BARRAMENTO",
+                    21150100: "UHE SÃO SALVADOR RIO MUCAMBÃO",
+                    21160100: "UHE SÃO SALVADOR RIO CUSTÓDIO",
+                    21163100: "UHE SÃO SALVADOR RIBEIRÃO MUCAMBINHO",
+                    21273000: "PCH PIARUCUM MONTANTE",
+                    21273100: "CGH SIRIVERA MONTANTE",
+                    23700000: "DESCARRETO",
+                    23495000: "UHE ESTREITO JUSANTE",
+                    23598000: "TOCANTINÓPOLIS",
+                    23249000: "UHE ESTREITO RIO MANOEL ALVES GRANDE",
+                    23250000: "GOIATINS",
+                    23150100: "UHE ESTREITO RIO MANOEL ALVES PEQUENO",
+                    23100000: "TUPIRATINS",
+                    23100100: "UHE ESTREITO MONTANTE 2",
+                    27110000: "RIO DO COCO",
+                    27600010: "PONTE RIO BARREIRAS",
+                    27530000: "BERNARDO SAYÃO",
+                    27550000: "ARAPOEMA",
+                    27300900: "RIO CAIAPÓ - FAZ GRUPO AGROPAULO",
+                    27320000: "ARAGUACEMA (CHACARA ARAGUAIA)"
+                };
+
+                // Define uma função para adicionar uma linha na tabela de Cota_Adotada
+                function adicionarLinhaCota(estacaoId, nomeEstacao, dataHoraMedicao, cotas) {
+                    const tbody = document.getElementById('tabela-nivel').getElementsByTagName('tbody')[0];
+
+                    if (!tbody) {
+                        console.error('Tbody não encontrado para tabela de Cota_Adotada');
+                        return;
+                    }
+
+                    const tr = document.createElement('tr');
+
+                    const tdEstacao = document.createElement('td');
+                    tdEstacao.textContent = estacaoId;
+                    tr.appendChild(tdEstacao);
+
+                    const tdNome = document.createElement('td');
+                    tdNome.textContent = nomeEstacao || 'Nome desconhecido';
+                    tr.appendChild(tdNome);
+
+                    const tdDataHoraMedicao = document.createElement('td');
+                    tdDataHoraMedicao.textContent = dataHoraMedicao || 'INDISPONÍVEL';
+                    tr.appendChild(tdDataHoraMedicao);
+
+                    cotas.forEach(cota => {
+                        const tdCota = document.createElement('td');
+                        tdCota.textContent = cota || '-';
+                        tr.appendChild(tdCota);
+                    });
+
+                    tbody.appendChild(tr);
+                }
+
+                // Define uma função para adicionar uma linha na tabela de Chuva_Adotada
+                function adicionarLinhaChuva(estacaoId, nomeEstacao, dataHoraMedicao, chuvas) {
+                    const tbody = document.getElementById('tabela-chuva').getElementsByTagName('tbody')[0];
+
+                    if (!tbody) {
+                        console.error('Tbody não encontrado para tabela de Chuva_Adotada');
+                        return;
+                    }
+
+                    const tr = document.createElement('tr');
+
+                    const tdEstacao = document.createElement('td');
+                    tdEstacao.textContent = estacaoId;
+                    tr.appendChild(tdEstacao);
+
+                    const tdNome = document.createElement('td');
+                    tdNome.textContent = nomeEstacao || 'Nome desconhecido';
+                    tr.appendChild(tdNome);
+
+                    const tdDataHoraMedicao = document.createElement('td');
+                    tdDataHoraMedicao.textContent = dataHoraMedicao || 'INDISPONÍVEL';
+                    tr.appendChild(tdDataHoraMedicao);
+
+                    chuvas.forEach(chuva => {
+                        const tdChuva = document.createElement('td');
+                        tdChuva.textContent = chuva || '-';
+                        tr.appendChild(tdChuva);
+                    });
+
+                    tbody.appendChild(tr);
+                }
+
+                // Define uma função para adicionar uma linha na tabela de Vazao_Adotada
+                function adicionarLinhaVazao(estacaoId, nomeEstacao, dataHoraMedicao, vazoess) {
+                    const tbody = document.getElementById('tabela-vazao').getElementsByTagName('tbody')[0];
+
+                    if (!tbody) {
+                        console.error('Tbody não encontrado para tabela de Vazao_Adotada');
+                        return;
+                    }
+
+                    const tr = document.createElement('tr');
+
+                    const tdEstacao = document.createElement('td');
+                    tdEstacao.textContent = estacaoId;
+                    tr.appendChild(tdEstacao);
+
+                    const tdNome = document.createElement('td');
+                    tdNome.textContent = nomeEstacao || 'Nome desconhecido';
+                    tr.appendChild(tdNome);
+
+                    const tdDataHoraMedicao = document.createElement('td');
+                    tdDataHoraMedicao.textContent = dataHoraMedicao || 'INDISPONÍVEL';
+                    tr.appendChild(tdDataHoraMedicao);
+
+                    vazoess.forEach(vazao => {
+                        const tdVazao = document.createElement('td');
+                        tdVazao.textContent = vazao || '-';
+                        tr.appendChild(tdVazao);
+                    });
+
+                    tbody.appendChild(tr);
+                }
+
+                // Função para criar e adicionar gráficos
+                function criarGrafico(estacaoId, nomeEstacao, dataHoraMedicao, chuvas, cotas, vazoes) {
+                    // Função para preencher valores nulos com o valor anterior
+                    function preencherValoresNulosComAnterior(arr) {
+                        for (let i = 1; i < arr.length; i++) {
+                            if (arr[i] === null || arr[i] === '-') {
+                                arr[i] = arr[i - 1];
+                            }
+                        }
+                        return arr;
+                    }
+
+                    // Preencher valores nulos nos arrays de dados
+                    chuvas = preencherValoresNulosComAnterior(chuvas);
+                    cotas = preencherValoresNulosComAnterior(cotas);
+                    vazoes = preencherValoresNulosComAnterior(vazoes);
+
+                    const divGrafico = document.createElement('div');
+                    divGrafico.style.width = '700px';
+                    divGrafico.style.height = '400px';
+
+                    const canvas = document.createElement('canvas');
+                    divGrafico.appendChild(canvas);
+                    document.getElementById('graficos-geral').appendChild(divGrafico);
+
+                    new Chart(canvas, {
+                        type: 'bar',
+                        data: {
+                            labels: ['ATUAL', '4h', '8h', '12h', '24h'],
+                            datasets: [
+                                {
+                                    label: 'Chuva (mm)',
+                                    data: chuvas,
+                                    backgroundColor: 'rgba(39, 142, 194, 0.5)',
+                                    borderColor: 'rgba(39, 142, 194, 0.8)',
+                                    yAxisID: 'y-chuva' // Associando esta série ao eixo y 'y-chuva'
+                                },
+                                {
+                                    label: 'Nível (m)',
+                                    data: cotas,
+                                    type: 'line',
+                                    backgroundColor: 'rgba(252, 28, 16, 0.5)',
+                                    borderColor: 'rgba(252, 28, 16, 0.8)',
+                                    yAxisID: 'y-cota-vazao' // Associando esta série ao eixo y 'y-cota-vazao'
+                                },
+                                {
+                                    label: 'Vazão (m³/s)',
+                                    data: vazoes,
+                                    type: 'line',
+                                    backgroundColor: 'rgba(43, 190, 45, 0.5)',
+                                    borderColor: 'rgba(43, 190, 45, 0.8)',
+                                    yAxisID: 'y-cota-vazao' // Associando esta série ao eixo y 'y-cota-vazao'
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                'y-chuva': {
+                                    type: 'linear',
+                                    position: 'left',
+                                    title: {
+                                        display: true,
+                                        text: 'Chuva'
+                                    },
+                                    beginAtZero: true // Desativando o início em zero
+                                },
+                                'y-cota-vazao': {
+                                    type: 'linear',
+                                    position: 'right',
+                                    title: {
+                                        display: true,
+                                        text: 'Nível / Vazão'
+                                    },
+                                    beginAtZero: false // Desativando o início em zero
+                                },
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Tempo'
+                                    }
+                                }
+                            },
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: `Estação: ${nomeEstacao} (CÓDIGO: ${estacaoId})`,
+                                    font: {
+                                        size: 17
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                // Itera sobre cada chave (ID de estação) nos dados
+                Object.keys(dados).forEach(estacaoId => {
+                    const usuario = dados[estacaoId];
+                    const items = usuario.items;
+
+                    // Seleciona a Data_Hora_Medicao da posição 0
+                    const dataHoraMedicao = items[0] ? items[0].Data_Hora_Medicao : 'INDISPONÍVEL';
+
+                    let dataFormatada2;
+
+                    if (dataHoraMedicao !== 'INDISPONÍVEL') {
+                        // Converter a string para um objeto Date                    
+                        let dataObj = new Date(dataHoraMedicao);
+
+                        // Obter os componentes da data
+                        let dia = String(dataObj.getDate()).padStart(2, '0');
+                        let mes = String(dataObj.getMonth() + 1).padStart(2, '0'); // Meses em JavaScript são de 0 a 11
+                        let ano = dataObj.getFullYear();
+                        let horas = String(dataObj.getHours()).padStart(2, '0');
+                        let minutos = String(dataObj.getMinutes()).padStart(2, '0');
+
+                        // Formatar a data no formato desejado
+                        dataFormatada2 = `${dia}/${mes}/${ano} ${horas}:${minutos}`;
+                    } else {
+                        dataFormatada2 = 'INDISPONÍVEL';
+                    }
+
+                    // Seleciona as posições 0, 16, 32, 48 e 95 da Cota_Adotada
+                    const posicoesCota = [0, 16, 32, 48, 95];
+                    const cotasSelecionadas = posicoesCota.map(index => {
+                        return (items[index] && items[index].Cota_Adotada !== undefined) ? items[index].Cota_Adotada : '-';
+                    });
+
+                    // Seleciona as posições 0, 16, 32, 48 e 95 da Chuva_Adotada
+                    const posicoesChuva = [0, 16, 32, 48, 95];
+                    const chuvasSelecionadas = posicoesChuva.map(index => {
+                        return (items[index] && items[index].Chuva_Adotada !== undefined) ? items[index].Chuva_Adotada : '-';
+                    });
+
+                    // Seleciona as posições 0, 16, 32, 48 e 95 da Vazao_Adotada
+                    const posicoesVazao = [0, 16, 32, 48, 95];
+                    const vazoesSelecionadas = posicoesVazao.map(index => {
+                        return (items[index] && items[index].Vazao_Adotada !== undefined) ? items[index].Vazao_Adotada : '-';
+                    });
+
+                    // Adiciona as linhas às tabelas correspondentes
+                    adicionarLinhaCota(estacaoId, nomesEstacoes[estacaoId], dataFormatada2, cotasSelecionadas);
+                    adicionarLinhaChuva(estacaoId, nomesEstacoes[estacaoId], dataFormatada2, chuvasSelecionadas);
+                    adicionarLinhaVazao(estacaoId, nomesEstacoes[estacaoId], dataFormatada2, vazoesSelecionadas);
+
+                    // Cria os gráficos para cada estação
+                    criarGrafico(estacaoId, nomesEstacoes[estacaoId] || 'Nome Desconhecido', dataFormatada2, chuvasSelecionadas, cotasSelecionadas, vazoesSelecionadas);
+                });
+            } catch (erro) {
+                // Exibe um erro no console caso ocorra
+                console.error('Erro ao carregar os dados: ', erro);
+            } finally {
+                // Oculta o indicador de carregamento
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        // Chama a função para carregar os dados quando a página carrega
+        window.onload = carregarDados;
+    </script>
+
+    <script>
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://www.noite.me/hidro/api2.php');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        };
+
+        const processData = (data) => {
+            const chartData = {};
+
+            data.forEach(entry => {
+                const date = entry.data;
+                entry.dados.forEach(dado => {
+                    const reservatorio = dado.reservatorio;
+                    if (!chartData[reservatorio]) {
+                        chartData[reservatorio] = {
+                            labels: [],
+                            defluencias: []
+                        };
+                    }
+                    chartData[reservatorio].labels.push(date);
+                    chartData[reservatorio].defluencias.push(dado.defluencia);
+                });
+            });
+
+            return chartData;
+        };
+
+        const createChart = (ctx, labels, data, reservatorio) => {
+            const maxDefluencia = Math.max(...data);
+            const minDefluencia = Math.min(...data);
+
+            // Arredondar os valores máximo e mínimo
+            const roundedMaxDefluencia = Math.ceil(maxDefluencia + maxDefluencia * 0.008);
+            const roundedMinDefluencia = Math.floor(minDefluencia - minDefluencia * 0.008);
+
+            // Inverter a ordem dos arrays labels e data
+            const reversedLabels = labels.slice().reverse();
+            const reversedData = data.slice().reverse();
+
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Defluência (m³/s)',
+                        data: data,
+                        borderColor: 'rgb(54, 162, 235)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderWidth: 1,
+                        barThickness: 60, // Define a largura das barras
+                        categoryPercentage: 0.8, // Ajusta a largura das categorias
+                        barPercentage: 0.9 // Ajusta a largura das barras dentro das categorias
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: false,
+                                text: 'Data'
+                            }
+                        },
+                        y: {
+                            beginAtZero: false,
+                            max: roundedMaxDefluencia, // Valor máximo arredondado
+                            min: roundedMinDefluencia, // Valor mínimo arredondado
+                            title: {
+                                display: true,
+                                text: 'Defluência'
+                            },
+
+                            ticks: {
+                                stepSize: 1 // Define o incremento do eixo y para 1
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: reservatorio,
+                            font: {
+                                size: 24
+                            }
+                        },
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'top',
+                            formatter: (value) => value.toString()
+                        }
+                    }
+                },
+                plugins: [ChartDataLabels]
+            });
+        };
+
+        const renderCharts = async () => {
+            const data = await fetchData();
+            if (data) {
+                const chartData = processData(data);
+
+                const chartsContainer = document.getElementById('charts');
+
+                Object.keys(chartData).forEach(reservatorio => {
+                    const chartContainer = document.createElement('div');
+                    chartContainer.className = 'chart-container';
+                    chartContainer.innerHTML = `<canvas id="${reservatorio}"></canvas>`;
+                    chartsContainer.appendChild(chartContainer);
+
+                    const ctx = document.getElementById(reservatorio).getContext('2d');
+                    createChart(ctx, chartData[reservatorio].labels, chartData[reservatorio].defluencias, reservatorio);
+                });
+            }
+        };
+
+        renderCharts();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

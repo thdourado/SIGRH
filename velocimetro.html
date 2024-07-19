@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico Combinado de Pie e Doughnut - Chart.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="mixedChart" style="width: 200px !important;" width="400" height="400"></canvas>
+    <script>
+        const data = {
+            labels: ['Red', 'Blue', 'Yellow'],
+            datasets: [
+                {
+                    label: 'Pie',
+                    data: [40, 2, 30],
+                    backgroundColor: ['transparent', 'black', 'transparent'],
+                    hoverOffset: 4,
+                    type: 'pie' // Tipo de gráfico Pie
+                },
+                {
+                    label: 'Doughnut',
+                    data: [5, 5, 5, 75, 5, 5],
+                    backgroundColor: ['red', 'purple', 'yellow', 'blue', 'green', 'orange'],
+                    hoverOffset: 4,
+                    type: 'doughnut' // Tipo de gráfico Doughnut
+                }
+            ]
+        };
+
+        const config = {
+            type: 'pie', // Tipo inicial de gráfico (não afeta a renderização combinada)
+            data: data,
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'right'
+                    }
+                },
+                rotation: 270,
+                circumference: 180
+            }
+        };
+
+        // Criação do gráfico
+        const ctx = document.getElementById('mixedChart').getContext('2d');
+        const mixedChart = new Chart(ctx, config);
+    </script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados das Estações</title>
+    <style>
+        /* Estilo opcional para tabela */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Tabela para dados de Cota_Adotada -->
+    <h2>Dados de Cota Adotada</h2>
+    <table id="tabela-nivel">
+        <thead>
+            <tr>
+                <th>Estação ID</th>
+                <th>Nome da Estação</th>
+                <th>Data e Hora de Medição</th>
+                <th>Posição 0</th>
+                <th>Posição 16</th>
+                <th>Posição 32</th>
+                <th>Posição 48</th>
+                <th>Posição 95</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aqui serão inseridas as linhas dinamicamente -->
+        </tbody>
+    </table>
+
+    <!-- Tabela para dados de Chuva_Adotada -->
+    <h2>Dados de Chuva Adotada</h2>
+    <table id="tabela-chuva">
+        <thead>
+            <tr>
+                <th>Estação ID</th>
+                <th>Nome da Estação</th>
+                <th>Data e Hora de Medição</th>
+                <th>Posição 0</th>
+                <th>Posição 16</th>
+                <th>Posição 32</th>
+                <th>Posição 48</th>
+                <th>Posição 95</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aqui serão inseridas as linhas dinamicamente -->
+        </tbody>
+    </table>
+
+    <!-- Tabela para dados de Vazao_Adotada -->
+    <h2>Dados de Vazão Adotada</h2>
+    <table id="tabela-vazao">
+        <thead>
+            <tr>
+                <th>Estação ID</th>
+                <th>Nome da Estação</th>
+                <th>Data e Hora de Medição</th>
+                <th>Posição 0</th>
+                <th>Posição 16</th>
+                <th>Posição 32</th>
+                <th>Posição 48</th>
+                <th>Posição 95</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aqui serão inseridas as linhas dinamicamente -->
+        </tbody>
+    </table>
+
+    <script>
+        async function carregarDados() {
+            try {
+                // Faz a requisição para a URL especificada
+                const resposta = await fetch('https://noite.me/hidro/api.php');
+                // Converte a resposta para JSON
+                const dados = await resposta.json();
+
+                // Mapeia os IDs das estações para seus nomes correspondentes
+                const nomesEstacoes = {
+                    21758000: "AURORA DO TOCANTINS",
+                    21844900: "RIO PALMEIRAS - TAIPAS",
+                    21891000: "BARRA DE PALMAS",
+                    22160000: "GURUPI",
+                    22170000: "RIO CRIXÁS",
+                    22186000: "RIO MANUEL ALVES - PORTO ALEGRE DO TO",
+                    22220000: "PORTO JERÔNIMO - FAZ. PIRACICABA",
+                    22241000: "RIO DO PEIXE - ALMAS - TO",
+                    22511000: "RIO PROVIDÊNCIA",
+                    22670000: "RIO NOVO",
+                    22680000: "JATOBÁ (FAZENDA BOA NOVA)",
+                    22741000: "RIO BALSAS",
+                    22900000: "PORTO REAL",
+                    23100000: "TUPIRATINS",
+                    23250000: "GOIATINS",
+                    23700000: "DESCARRETO",
+                    26710000: "BARREIRA DO PEQUI",
+                    26721000: "DORILÂNDIA",
+                    26730000: "PROJETO RIO FORMOSO",
+                    26751000: "JUSANTE PROJETO RIO FORMOSO",
+                    26790000: "PONTE RIO DUERÉ",
+                    26792000: "FOZ RIO DUERÉ",
+                    26795100: "RIO URUBU FAZENDA SÃO BENTO",
+                    26795700: "RIO URUBU FAZENDA FORTALEZA",
+                    26795800: "PONTE RIO XAVANTE",
+                    26796000: "FOZ RIO XAVANTE",
+                    26798000: "RIO FORMOSO",
+                    26798100: "RIO FORMOSO LOROTI",
+                    26798500: "JUSANTE EIXO TARTARUGA RIO URUBU",
+                    26799000: "FOZ RIO FORMOSO",
+                    26800000: "BARREIRA DA CRUZ",
+                    27110000: "RIO DO COCO",
+                    27300900: "RIO CAIAPÓ - FAZ GRUPO AGROPAULO",
+                    27320000: "ARAGUACEMA (CHACARA ARAGUAIA)",
+                    27530000: "BERNARDO SAYÃO",
+                    27550000: "ARAPOEMA",
+                    28200000: "PONTE RIO LONTRA",
+                    28280000: "ARAGUANÃ",
+                    28300000: "XAMBIOÁ",
+                    28318000: "RIO CORDA RIACHINHO",
+                    28850000: "ARAGUATINS"
+                };
+
+                // Define uma função para adicionar uma linha na tabela de Cota_Adotada
+                function adicionarLinhaCota(estacaoId, nomeEstacao, dataHoraMedicao, cotas) {
+                    const tbody = document.getElementById('tabela-nivel').getElementsByTagName('tbody')[0];
+
+                    if (!tbody) {
+                        console.error('Tbody não encontrado para tabela de Cota_Adotada');
+                        return;
+                    }
+
+                    const tr = document.createElement('tr');
+
+                    const tdEstacao = document.createElement('td');
+                    tdEstacao.textContent = estacaoId;
+                    tr.appendChild(tdEstacao);
+
+                    const tdNome = document.createElement('td');
+                    tdNome.textContent = nomeEstacao || 'Nome desconhecido';
+                    tr.appendChild(tdNome);
+
+                    const tdDataHoraMedicao = document.createElement('td');
+                    tdDataHoraMedicao.textContent = dataHoraMedicao || 'N/A';
+                    tr.appendChild(tdDataHoraMedicao);
+
+                    cotas.forEach(cota => {
+                        const tdCota = document.createElement('td');
+                        tdCota.textContent = cota || 'N/A';
+                        tr.appendChild(tdCota);
+                    });
+
+                    tbody.appendChild(tr);
+                }
+
+                // Define uma função para adicionar uma linha na tabela de Chuva_Adotada
+                function adicionarLinhaChuva(estacaoId, nomeEstacao, dataHoraMedicao, chuvas) {
+                    const tbody = document.getElementById('tabela-chuva').getElementsByTagName('tbody')[0];
+
+                    if (!tbody) {
+                        console.error('Tbody não encontrado para tabela de Chuva_Adotada');
+                        return;
+                    }
+
+                    const tr = document.createElement('tr');
+
+                    const tdEstacao = document.createElement('td');
+                    tdEstacao.textContent = estacaoId;
+                    tr.appendChild(tdEstacao);
+
+                    const tdNome = document.createElement('td');
+                    tdNome.textContent = nomeEstacao || 'Nome desconhecido';
+                    tr.appendChild(tdNome);
+
+                    const tdDataHoraMedicao = document.createElement('td');
+                    tdDataHoraMedicao.textContent = dataHoraMedicao || 'N/A';
+                    tr.appendChild(tdDataHoraMedicao);
+
+                    chuvas.forEach(chuva => {
+                        const tdChuva = document.createElement('td');
+                        tdChuva.textContent = chuva || 'N/A';
+                        tr.appendChild(tdChuva);
+                    });
+
+                    tbody.appendChild(tr);
+                }
+
+                // Define uma função para adicionar uma linha na tabela de Vazao_Adotada
+                function adicionarLinhaVazao(estacaoId, nomeEstacao, dataHoraMedicao, vazoess) {
+                    const tbody = document.getElementById('tabela-vazao').getElementsByTagName('tbody')[0];
+
+                    if (!tbody) {
+                        console.error('Tbody não encontrado para tabela de Vazao_Adotada');
+                        return;
+                    }
+
+                    const tr = document.createElement('tr');
+
+                    const tdEstacao = document.createElement('td');
+                    tdEstacao.textContent = estacaoId;
+                    tr.appendChild(tdEstacao);
+
+                    const tdNome = document.createElement('td');
+                    tdNome.textContent = nomeEstacao || 'Nome desconhecido';
+                    tr.appendChild(tdNome);
+
+                    const tdDataHoraMedicao = document.createElement('td');
+                    tdDataHoraMedicao.textContent = dataHoraMedicao || 'N/A';
+                    tr.appendChild(tdDataHoraMedicao);
+
+                    vazoess.forEach(vazao => {
+                        const tdVazao = document.createElement('td');
+                        tdVazao.textContent = vazao || 'N/A';
+                        tr.appendChild(tdVazao);
+                    });
+
+                    tbody.appendChild(tr);
+                }
+
+                // Itera sobre cada chave (ID de estação) nos dados
+                Object.keys(dados).forEach(estacaoId => {
+                    const usuario = dados[estacaoId];
+                    const items = usuario.items;
+
+                    // Seleciona a Data_Hora_Medicao da posição 0
+                    const dataHoraMedicao = items[0] ? items[0].Data_Hora_Medicao : 'N/A';
+
+                    // Seleciona as posições 0, 16, 32, 48 e 95 da Cota_Adotada
+                    const posicoesCota = [0, 16, 32, 48, 95];
+                    const cotasSelecionadas = posicoesCota.map(index => {
+                        return (items[index] && items[index].Cota_Adotada !== undefined) ? items[index].Cota_Adotada : 'N/A';
+                    });
+
+                    // Seleciona as posições 0, 16, 32, 48 e 95 da Chuva_Adotada
+                    const posicoesChuva = [0, 16, 32, 48, 95];
+                    const chuvasSelecionadas = posicoesChuva.map(index => {
+                        return (items[index] && items[index].Chuva_Adotada !== undefined) ? items[index].Chuva_Adotada : 'N/A';
+                    });
+
+                    // Seleciona as posições 0, 16, 32, 48 e 95 da Vazao_Adotada
+                    const posicoesVazao = [0, 16, 32, 48, 95];
+                    const vazoesSelecionadas = posicoesVazao.map(index => {
+                        return (items[index] && items[index].Vazao_Adotada !== undefined) ? items[index].Vazao_Adotada : 'N/A';
+                    });
+
+                    // Adiciona as linhas às tabelas correspondentes
+                    adicionarLinhaCota(estacaoId, nomesEstacoes[estacaoId], dataHoraMedicao, cotasSelecionadas);
+                    adicionarLinhaChuva(estacaoId, nomesEstacoes[estacaoId], dataHoraMedicao, chuvasSelecionadas);
+                    adicionarLinhaVazao(estacaoId, nomesEstacoes[estacaoId], dataHoraMedicao, vazoesSelecionadas);
+                });
+            } catch (erro) {
+                // Exibe um erro no console caso ocorra
+                console.error('Erro ao carregar os dados: ', erro);
+            }
+        }
+
+        // Chama a função para carregar os dados quando a página carrega
+        window.onload = carregarDados;
+    </script>
+</body>
+</html>
