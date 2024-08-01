@@ -1,0 +1,44 @@
+<div>
+
+</div><table id="tblLegReferencias" class="tblLegReferencias">
+<tbody><tr align=left><td colspan=2><hr /></td> </tr></tbody>
+<tbody>
+<tr align=center> <td colspan=2 class=docTecTit2>Referências</td> </tr>
+<tr align=left><td colspan=2><hr /></td> </tr></tbody>
+<tbody>
+<tr style='text-align:left; cursor:pointer;' onclick=ShowHideEstacoes('imgSel,imgC15,imgC255,imgC18,imgC3,imgC11,imgC16,imgC1,imgC0','Sel.png','ultimosDados'); >
+<td width='1'><img id=imgSel src=http://localhost:24058/inc/img/pontos/SelNd.png width=14 height=14 />
+<td>Selecionar
+<tr style='text-align:left; cursor:pointer;' onclick=ShowHideEstacoes('imgC15','c/15.png','ultimosDados'); >
+<td><img id=imgC15 src=http://localhost:24058/inc/img/pontos/c/15.png width=14 height=14 />
+<td>Sem Informação Atualizada
+<tr style='text-align:left; cursor:pointer;' onclick=ShowHideEstacoes('imgC255','c/255.png','ultimosDados'); >
+<td><img id=imgC255 src=http://localhost:24058/inc/img/pontos/c/255.png width=14 height=14 />
+<td>Sem Chuva
+<tr style='text-align:left; cursor:pointer;' onclick=ShowHideEstacoes('imgC18','c/18.png','ultimosDados'); >
+<td><img id=imgC18 src=http://localhost:24058/inc/img/pontos/c/18.png width=14 height=14 />
+<td>Muito fraca (< 5mm)
+<tr style='text-align:left; cursor:pointer;' onclick=ShowHideEstacoes('imgC3','c/3.png','ultimosDados');>
+<td><img id=imgC3 src=http://localhost:24058/inc/img/pontos/c/3.png width=14 height=14 />
+<td>Fraca (>= 5 a 10mm)
+<tr style='text-align:left; cursor:pointer;' onclick=ShowHideEstacoes('imgC11','c/11.png','ultimosDados');>
+<td><img id=imgC11 src=http://localhost:24058/inc/img/pontos/c/11.png width=14 height=14 />
+<td>Moderada (>= 10 a 20mm)
+<tr style='text-align:left; cursor:pointer;' onclick=ShowHideEstacoes('imgC16','c/16.png','ultimosDados');>
+<td><img id=imgC16 src=http://localhost:24058/inc/img/pontos/c/16.png width=14 height=14 />
+<td>Forte (>= 20 a 40mm)
+<tr style='text-align:left; cursor:pointer;' onclick=ShowHideEstacoes('imgC1','c/1.png','ultimosDados');>
+<td><img id=imgC1 src=http://localhost:24058/inc/img/pontos/c/1.png width=14 height=14 />
+<td>Muito forte (>= 40mm)
+<tr style='text-align:left; cursor:pointer;' onclick=ShowHideEstacoes('imgC0','c/0.png','ultimosDados');>
+<td><img id=imgC0 src=http://localhost:24058/inc/img/pontos/c/0.png width=14 height=14 />
+<td>Estações que nunca tiveram <br>transmissões
+</tbody>
+<tbody class=marcaAna>
+<tr align=left><td colspan=2 class=docTecTit2>
+<hr />Informações úteis
+</td> </tr>
+<td colspan=2 style='margin-top:0px; font-size:0.8em;' align=left>
+* Os dados são disponibilizados no horário de Brasília <br>sem considerar a horário de verão <span style="font-weight:bold; color:red;"> (UTC-3)</span>.<br>* A chuva é medida em mm, o nível em cm,  e a vazão em m3/s.<br>* A situação apresentada refere à última hora transmitida.<br>* O prazo para considerar a informação atualizada é de 96 horas.<br>
+* Clicar nos elementos da legenda para filtrar as situações <br>de referência.<br><hr />
+</table>
